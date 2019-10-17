@@ -4,13 +4,6 @@ import * as Yup from "yup";
 import axios from "axios";
 
 const SignUp = props => {
-    const [users, setUsers] = React.useState([]);
-
-    React.useEffect(() => {
-        if (props.status) {
-            setUsers([...users, props.status]);
-        }
-    }, [props.status]);
 
     return (
         <div className="user-form">
@@ -33,19 +26,12 @@ const SignUp = props => {
                 )}
                 <button type="submit">Submit</button>
             </Form>
-            {users.map(user => (
-                <ul key={user.id}>
-                    <li>Name: {user.name}</li>
-                    <li>Email: {user.email}</li>
-                    <li>Username: {user.username}</li>
-                    <li>Password: {user.password}</li>
-                </ul>
-            ))}
         </div>
     );
 };
 
 const myMapPropsToValues = props => {
+    console.log(props)
     const returnObj = {
         name: props.name || "",
         email: props.email || "",
@@ -55,21 +41,29 @@ const myMapPropsToValues = props => {
     return returnObj;
 }
 
-const myHandleSubmit = (values, { setStatus }) => {
-    axios
-        
-        .then(res => {
-            setStatus(res.data);
-        })
-        .catch(err => console.error(err));
-};
+const myHandleSubmit = (values) => {
+    axios.post(`https://tripsplitr.herokuapp.com/auth/register`, values)
+    // API doesn't automatically log you in after registering, so another call is required for login
+        .then(
+            axios.post(`https://tripsplitr.herokuapp.com/auth/login`, {
+                username: values.username,
+                password: values.password
+            })
+            .then(res => {
+                console.log(res)
+                localStorage.setItem('token', res.data.token);
+    // will add redirect to dashboard after we set up routes
+            })
+        )
+        .catch(err => console.log(err))
+}
 
 const yupSchema = Yup.object().shape({
-    name: Yup.string().required("please type a name"),
-    email: Yup.string().required("please type an email"),
-    password: Yup.string().required("please type a password"),
-    role: Yup.string().required("please select a role")
-});
+    name: Yup.string().required("Please enter a name"),
+    email: Yup.string().email("Email not valid").required("Please enter a email"),
+    password: Yup.string().required("Please enter a password"),
+    username: Yup.string().required("Please enter a username")
+})
 
 const formikObj = {
     mapPropsToValues: myMapPropsToValues,
