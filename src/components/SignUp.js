@@ -60,7 +60,7 @@ const myHandleSubmit = (values) => {
 
 const yupSchema = Yup.object().shape({
     name: Yup.string().required("Please enter a name"),
-    email: Yup.string().email("Email not valid").required("Please enter a email"),
+    email: Yup.string().email("Email address not valid").required("Please enter an email address"),
     password: Yup.string().required("Please enter a password"),
     username: Yup.string().required("Please enter a username")
 })
