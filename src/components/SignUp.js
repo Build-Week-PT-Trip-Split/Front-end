@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-export default function SignUp (props) {
+const SignUp = props => {
     const [users, setUsers] = React.useState([]);
 
     React.useEffect(() => {
@@ -79,6 +79,6 @@ const formikObj = {
 
 const EnhancedFormHOC = withFormik(formikObj);
 
-const EnhancedForm = EnhancedFormHOC(SignUp);
+const SignUpForm = EnhancedFormHOC(SignUp);
 
-export default EnhancedForm;
+export default SignUpForm;
