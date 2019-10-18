@@ -4,10 +4,10 @@ import {
     GET_USERS_SUCCESS,
     GET_USERS_FAIL
 } from '../actions/index.js';
-import { bindActionCreators } from 'redux';
 
 const initialState = {
-    users: []
+    users: [],
+    trips: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -17,16 +17,17 @@ export const reducer = (state = initialState, action) => {
                 ...state
             }
         
-        case GET_USERS_SUCCESS: 
+        case GET_USERS_SUCCESS:
             return {
                 users: action.payload
             }
+            
             
         case GET_USERS_FAIL:
             return {
                 ...state
             }
-        
+            
         default: return state;
     }
 }
