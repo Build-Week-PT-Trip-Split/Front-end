@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/stock_logo.jpg';
+import Logo from '../assets/logo.png';
 
 export default function NavBar () {
     return (
@@ -8,7 +8,7 @@ export default function NavBar () {
             <Link to='/profile'>My Profile</Link>
             <Link to='/friends'>My Friends</Link>
             <Link to='/trips'>My Trips</Link>
-            <Link to='/'>Logout</Link>
+            <Link to='/login'>Logout</Link>
             <img src={Logo} alt='Trip Split Logo' />
         </div>
     );
