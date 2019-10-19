@@ -41,7 +41,8 @@ const myMapPropsToValues = props => {
     return returnObj;
 }
 
-const myHandleSubmit = (values) => {
+const myHandleSubmit = (values, {props}) => {
+    console.log(props);
     axios.post(`https://tripsplitr.herokuapp.com/auth/register`, values)
     // API doesn't automatically log you in after registering, so another call is required for login
         .then(
@@ -52,7 +53,7 @@ const myHandleSubmit = (values) => {
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.token);
-    // will add redirect to dashboard after we set up routes
+                // props.history.push('/trips');
             })
         )
         .catch(err => console.log(err))
