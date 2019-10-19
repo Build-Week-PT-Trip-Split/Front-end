@@ -1,4 +1,4 @@
-import {axiosWithAuth} from '../utils/axiosAuth.js';
+import axiosWithAuth from '../utils/axiosAuth.js';
 
 // Users Reducer Action Variables
 
