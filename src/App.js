@@ -11,9 +11,9 @@ import NavBar from './components/Nav.js';
 import TripsList from './components/trips/TripsList.js';
 
 function App(props) {
-  // useEffect(() => {
-  //   props.getTrips();
-  // }, [])
+  useEffect(() => {
+    props.getTrips();
+  }, [])
   
   return (
     <div className="App">

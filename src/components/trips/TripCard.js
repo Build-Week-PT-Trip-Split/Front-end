@@ -7,6 +7,7 @@ const TripCard = (props) => {
             <img src={props.trip.img} />
             <p>{props.trip.date}</p>
             <p>{props.trip.base_cost}</p>
+            <button>Edit Trip</button>
         </div>
     )
 }

@@ -9,6 +9,7 @@ const TripsList = (props) => {
     return (
         <div>
             <h1>Trips</h1>
+            <button>Add Trip</button>
             {props.trips.map((trip) => {
                 return <TripCard key={trip.id} trip={trip} />
             })}
@@ -17,8 +18,9 @@ const TripsList = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        trips: state.trips
+        trips: state.tripReducer.trips
     }
 }
 
