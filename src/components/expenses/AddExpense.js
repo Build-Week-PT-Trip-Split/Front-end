@@ -18,12 +18,13 @@ const AddExpense = props => {
                 <Field tpye='text' name='name' placeholder='What did you pay for?' />
                 <Field tpye='text' name='amount' placeholder='How much was it?' />
                 <Field tpye='text' name='paid' placeholder='Who Paid?' />
+                <button type='submit'>Submit</button>
             </Form>
             {expense.map(exp => (
                 <ul key={exp.id}>
                     <li>Expense: {exp.name}</li>
                     <li>Amount: {exp.amount}</li>
-                    <li>Primary: {exp.paid}</li>
+                    <li>Primary: {exp.primary_paid}</li>
                 </ul>
             ))}
         </div>
@@ -33,9 +34,9 @@ const AddExpense = props => {
 
 const myMapPropsToValues = props => {
     const returnObj = {
-        name: props.name || "",
-        amount: props.amount || "",
-        paid: props.paid || "",
+        expense_name: props.name || "",
+        total_expense_price: props.amount || "",
+        primary_paid: props.paid || "",
     };
     return returnObj;
 }
