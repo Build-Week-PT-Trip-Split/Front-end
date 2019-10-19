@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {getUsers, getTrips} from './actions/index.js';
 import {connect} from 'react-redux';
@@ -8,24 +8,24 @@ import {connect} from 'react-redux';
 import LogIn from './components/LogIn.js';
 import SignUp from './components/SignUp.js';
 import NavBar from './components/Nav.js';
+import TripsList from './components/trips/TripsList.js';
 
 function App(props) {
+  // useEffect(() => {
+  //   props.getTrips();
+  // }, [])
+  
   return (
     <div className="App">
       <NavBar />
       <h1>Trip Split</h1>
       <LogIn />
       <SignUp />
-      <button onClick={() => props.getTrips()}>Get Users</button>
-      {/* {console.log("Redux trips", props)} */}
+      {/* <button onClick={() => props.getTrips()}>Get Trips</button> */}
+      {/* {props.trips ? props.getTrips() : "No Trip Data"} */}
+      <TripsList />
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    // trips: state.trips
-  }
-}
-
-export default connect(mapStateToProps, {getTrips})(App);
+export default connect(null, {getTrips})(App);
