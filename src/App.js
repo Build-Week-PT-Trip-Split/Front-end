@@ -9,6 +9,7 @@ import LogIn from './components/LogIn.js';
 import SignUp from './components/SignUp.js';
 import NavBar from './components/Nav.js';
 import TripsList from './components/trips/TripsList.js';
+import AddTrip from './components/trips/AddTrip.js';
 
 function App(props) {
   useEffect(() => {
@@ -19,10 +20,11 @@ function App(props) {
     <div className="App">
       <NavBar />
       <h1>Trip Split</h1>
-      <LogIn />
-      <SignUp />
+      {/* <LogIn /> */}
+      {/* <SignUp /> */}
       {/* <button onClick={() => props.getTrips()}>Get Trips</button> */}
       {/* {props.trips ? props.getTrips() : "No Trip Data"} */}
+      <AddTrip />
       <TripsList />
     </div>
   );
