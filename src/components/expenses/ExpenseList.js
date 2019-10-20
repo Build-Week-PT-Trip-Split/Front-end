@@ -25,15 +25,9 @@ const ExpenseList = props => {
     return (
         <div className='expenseList'>
             {exp.map(expense => (
-                <ExpenseDetails key={expense.id} exp={expense} />
+                <ExpenseCard key={expense.id} exp={expense} />
             ))}
         </div>
-    );
-};
-
-function ExpenseDetails({ expense }) {
-    return (
-        <ExpenseCard exp={expense} />
     );
 };
 

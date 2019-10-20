@@ -2,13 +2,13 @@ import React from 'react';
 
 const Profile = (props) => {
 
-    const [user, setUser] = React.useState([]);
+    const [user, setUser] = React.useState({"id":1,"name":"Mario","username":"mario1","password":"pass","email":"test@gmail.com"});
 
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-        setUser();
+    //     setUser();
 
-    }, []);
+    // }, []);
 
     const { name, username, email, img } = user;
 

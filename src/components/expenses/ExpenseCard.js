@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ExpenseCard = exp => {
+const ExpenseCard = ({exp}) => {
 
     const { expense_name, total_expense_price, primary_paid, id } = exp;
 
