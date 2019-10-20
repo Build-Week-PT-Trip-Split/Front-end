@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import { Link } from 'react-router-dom';
 
 const LogIn = ({values, errors, touched}) => {
 
@@ -26,7 +26,7 @@ const LogIn = ({values, errors, touched}) => {
                 </label>
                 <button className="loginButton">Log In</button>
             </Form>
-           <button>Sign Up</button>
+            <p>Don't have an account? <Link to="signup">Sign Up</Link></p>
            <button>Forgot Password</button>
         </div>
     );
@@ -36,7 +36,7 @@ const LogInWithFormik = withFormik({
     mapPropsToValues( { username, password }) {
         return {
             username: username || "",
-            password: password || ""
+            password: password || "",
         }
     },
 
@@ -47,12 +47,20 @@ const LogInWithFormik = withFormik({
         password: Yup.string().required("password is required"),
     }),
 
-    handleSubmit(values) {
+    handleSubmit(values, {props}) {
+        console.log(props)
+        let history = props.history;
+        let location = props.location;
+        let { from } = location.state || { from: { pathname: "/" } };
         console.log("this is value eneter:", values);
-        axios
-        .get(`https://tripsplitr.herokuapp.com/users`)
+        axios.post(`https://tripsplitr.herokuapp.com/auth/login`, {
+                username: values.username,
+                password: values.password
+            })
         .then (res => {
-            console.log("These are user lists:", res)
+            localStorage.setItem('token', res.data.token);
+            history.replace(from);
+            props.setAuth(true);
         })
         .catch(error => console.log(error));
     }

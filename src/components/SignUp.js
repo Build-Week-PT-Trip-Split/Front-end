@@ -2,6 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const SignUp = props => {
 
@@ -20,12 +21,13 @@ const SignUp = props => {
                 {props.touched.username && props.errors.username && (
                     <p className="error">{props.errors.username}</p>
                 )}
-                <Field type="text" name="password" placeholder="Create Password" />
+                <Field type="password" name="password" placeholder="Create Password" />
                 {props.touched.password && props.errors.password && (
                     <p className="error">{props.errors.password}</p>
                 )}
                 <button type="submit">Submit</button>
             </Form>
+            <p>Already have an account? <Link to="login">Log In</Link></p>
         </div>
     );
 };
@@ -43,6 +45,9 @@ const myMapPropsToValues = props => {
 
 const myHandleSubmit = (values, {props}) => {
     console.log(props);
+    let history = props.history;
+    let location = props.location;
+    let { from } = location.state || { from: { pathname: "/" } };
     axios.post(`https://tripsplitr.herokuapp.com/auth/register`, values)
     // API doesn't automatically log you in after registering, so another call is required for login
         .then(
@@ -53,7 +58,8 @@ const myHandleSubmit = (values, {props}) => {
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.token);
-                // props.history.push('/trips');
+                history.replace(from);
+                props.setAuth(true);
             })
         )
         .catch(err => console.log(err))
