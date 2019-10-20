@@ -20,10 +20,6 @@ function App(props) {
     <div className="App">
       <NavBar />
       <h1>Trip Split</h1>
-      {/* <LogIn /> */}
-      {/* <SignUp /> */}
-      {/* <button onClick={() => props.getTrips()}>Get Trips</button> */}
-      {/* {props.trips ? props.getTrips() : "No Trip Data"} */}
       <AddTrip />
       <TripsList />
     </div>
