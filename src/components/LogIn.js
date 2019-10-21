@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-const LogIn = ({values, errors, touched}, props) => {
+const LogIn = ({values, errors, touched}) => {
 
     return (
         <div>
