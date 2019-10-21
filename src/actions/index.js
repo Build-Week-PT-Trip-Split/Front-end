@@ -12,6 +12,12 @@ export const GET_TRIPS_START = "GET_TRIPS_START";
 export const GET_TRIPS_SUCCESS = "GET_TRIPS_SUCCESS";
 export const GET_TRIPS_FAIL = "GET_TRIPS_FAIL";
 
+// Expenses Reducer Action Variables
+
+export const GET_EXPENSES_START = "GET_EXPENSES_START";
+export const GET_EXPENSES_SUCCESS = "GET_EXPENSES_SUCCESS";
+export const GET_EXPENSES_FAIL = "GET_EXPENSES_FAIL";
+
 
 export const getUsers = () => (dispatch) => {
     console.log("getUsers Fired")
@@ -32,4 +38,14 @@ export const getTrips = () => (dispatch) => {
                 dispatch({type: GET_TRIPS_SUCCESS, payload: res.data})
             })
             .catch((err) => dispatch({type: GET_TRIPS_FAIL, payload: err}));
+}
+
+export const getExpenses = () => (dispatch) => {
+    console.log("getExpenses Fired")
+    dispatch({type: GET_EXPENSES_START})
+    axiosWithAuth().get('https://tripsplitr.herokuapp.com/expenses')
+            .then((res) => {
+                dispatch({type: GET_EXPENSES_SUCCESS, payload: res.data})
+            })
+            .catch((err) => dispatch({type: GET_EXPENSES_FAIL, payload: err}));
 }

@@ -12,6 +12,7 @@ import AddTrip from './components/trips/AddTrip.js';
 // Import Components
 
 import TripsList from './components/trips/TripsList.js';
+import ExpenseList from './components/expenses/ExpenseList';
 
 function App(props) {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -35,6 +36,7 @@ function App(props) {
       <PrivateRoute path='/' exact component={TripsList} />
       <PrivateRoute path="/trips" component={TripsList}/>
       <PrivateRoute path="/friends" component={FriendList} />
+      <PrivateRoute path="/expenses" component={ExpenseList}/>
       <PrivateRoute path="/new/trip" component={AddTrip} />
       {/* <PrivateRoute path="/profile" component={Profile} /> */}
     </div>
