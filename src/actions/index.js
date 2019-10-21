@@ -1,4 +1,4 @@
-import {axiosWithAuth} from '../utils/axiosAuth.js';
+import axiosWithAuth from '../utils/axiosAuth.js';
 
 // Users Reducer Action Variables
 
@@ -18,7 +18,6 @@ export const getUsers = () => (dispatch) => {
     dispatch({type: GET_USERS_START})
     axiosWithAuth().get('https://tripsplitr.herokuapp.com/users')
             .then((res) => {
-                // console.log(res.data)
                 dispatch({type: GET_USERS_SUCCESS, payload: res.data})
             })
             .catch((err) => dispatch({type: GET_USERS_FAIL, payload: err}));
