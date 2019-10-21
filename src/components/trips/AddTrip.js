@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import axiosWithAuth from '../../utils/axiosAuth.js';
+import {getTrips} from '../../actions/index.js';
+import {Redirect} from 'react-router-dom';
 
 const AddTrip = (props) => {
     const [tripInfo, setTripInfo] = useState({});
@@ -8,13 +10,17 @@ const AddTrip = (props) => {
     
     const handleChange = (event) => {
         setTripInfo({...tripInfo, [event.target.name]: event.target.value})
-        // console.log(changes);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axiosWithAuth().post('/trips', tripInfo)
-            .then((res) => console.log(res))
+            .then((res) => {
+                console.log(res)
+                getTrips();
+                setTripInfo({});
+                })
+            .then((res) => <Redirect to="/trips" />)
             .catch((err) => console.log(err))
     }
 

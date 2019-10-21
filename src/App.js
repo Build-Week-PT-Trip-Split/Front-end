@@ -1,29 +1,43 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {getUsers, getTrips} from './actions/index.js';
 import {connect} from 'react-redux';
+import Nav from './components/Nav';
+import PrivateRoute from './components/PrivateRoute';
+import {Route} from 'react-router-dom';
+import SignUp from './components/SignUp';
+import LogIn from './components/LogIn';
+import FriendList from './components/friends/FriendList';
+import AddTrip from './components/trips/AddTrip.js';
 
 // Import Components
 
-import LogIn from './components/LogIn.js';
-import SignUp from './components/SignUp.js';
-import NavBar from './components/Nav.js';
+// import SignUp from './components/SignUp.js';
+// import NavBar from './components/Nav.js';
 import TripsList from './components/trips/TripsList.js';
-import AddTrip from './components/trips/AddTrip.js';
 
 function App(props) {
-  useEffect(() => {
-    props.getTrips();
-  }, [])
-  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean);
+  }
+
+  console.log(isAuthenticated);
+
   return (
     <div className="App">
-      <NavBar />
+      <Nav setAuth={setAuth} isAuthenticated={isAuthenticated}/>
       <h1>Trip Split</h1>
-      <AddTrip />
-      <TripsList />
+      <Route path="/signup" render={props => <SignUp {...props} setAuth={setAuth}/>} />
+      <Route path="/login" render={props => <LogIn {...props} setAuth={setAuth}/>} />
+      {/* This following route makes sure you get redirected correctly as soon as you load the app */}
+      <PrivateRoute path='/' exact component={TripsList} />
+      <PrivateRoute path="/trips" component={TripsList}/>
+      <PrivateRoute path="/friends" component={FriendList} />
+      <PrivateRoute path="/new/trip" component={AddTrip} />
+      {/* <PrivateRoute path="/profile" component={Profile} /> */}
     </div>
   );
 }
 
-export default connect(null, {getTrips})(App);
+export default connect(null, {})(App);
