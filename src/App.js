@@ -11,8 +11,6 @@ import AddTrip from './components/trips/AddTrip.js';
 
 // Import Components
 
-// import SignUp from './components/SignUp.js';
-// import NavBar from './components/Nav.js';
 import TripsList from './components/trips/TripsList.js';
 
 function App(props) {
