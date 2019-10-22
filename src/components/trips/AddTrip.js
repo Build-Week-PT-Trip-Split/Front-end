@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import {connect} from 'react-redux';
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrips} from '../../actions/index.js';
 
