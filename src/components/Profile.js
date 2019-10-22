@@ -1,7 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {getCurrentUser} from '../actions/index.js';
 
 const Profile = (props) => {
+
+    useEffect(() => {
+        props.getCurrentUser(localStorage.getItem("userID"));
+    }, [])
 
     const { name, username, email, img } = props.user;
 
@@ -21,4 +26,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {})(Profile);
+export default connect(mapStateToProps, {getCurrentUser})(Profile);

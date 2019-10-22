@@ -20,7 +20,9 @@ export const GET_EXPENSES_FAIL = "GET_EXPENSES_FAIL";
 
 // Current User Reducer Action Variables
 
-export const GET_CURRENT_USER = "GET_CURRENT_USER";
+export const GET_CURRENT_USER_START = "GET_CURRENT_USER_START";
+export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER_SUCCESS";
+export const GET_CURRENT_USER_FAIL = "GET_CURRENT_USER_FAIL";
 
 export const getUsers = () => (dispatch) => {
     console.log("getUsers Fired")
@@ -53,8 +55,12 @@ export const getExpenses = () => (dispatch) => {
             .catch((err) => dispatch({type: GET_EXPENSES_FAIL, payload: err}));
 }
 
-export const getCurrentUser = (user) => (dispatch) => {
+export const getCurrentUser = (userID) => (dispatch) => {
     console.log("getCurrentUser Fired")
-    dispatch({type: GET_CURRENT_USER, payload: user})
-    console.log(user)
+    dispatch({type: GET_CURRENT_USER_START})
+    axiosWithAuth().get(`https://tripsplitr.herokuapp.com/users/${userID}`)
+            .then((res) => {
+                dispatch({type: GET_CURRENT_USER_SUCCESS, payload: res.data})
+            })
+            .catch((err) => dispatch({type: GET_CURRENT_USER_FAIL, payload: err}));
 }

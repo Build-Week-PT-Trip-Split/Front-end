@@ -3,8 +3,6 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import {getCurrentUser} from '../actions/index.js';
 
 const SignUp = props => {
 
@@ -62,7 +60,7 @@ const myHandleSubmit = (values, {props}) => {
                 localStorage.setItem('token', res.data.token);
                 history.replace(from);
                 props.setAuth(true);
-                props.dispatch(getCurrentUser(res.data.user))
+                localStorage.setItem('userID', res.data.user.id);
             })
         )
         .catch(err => console.log(err))
@@ -85,6 +83,4 @@ const EnhancedFormHOC = withFormik(formikObj);
 
 const SignUpForm = EnhancedFormHOC(SignUp);
 
-const SignUpHOC = connect()(SignUpForm);
-
-export default SignUpHOC;
+export default SignUpForm;

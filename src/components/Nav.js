@@ -7,7 +7,7 @@ export default function NavBar(props) {
     const handleLogout = (event) => {
         event.preventDefault();
         props.setAuth(false);
-        localStorage.removeItem('token');
+        localStorage.clear();
       }
 
     return (
