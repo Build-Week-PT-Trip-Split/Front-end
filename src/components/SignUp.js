@@ -60,6 +60,7 @@ const myHandleSubmit = (values, {props}) => {
                 localStorage.setItem('token', res.data.token);
                 history.replace(from);
                 props.setAuth(true);
+                localStorage.setItem('userID', res.data.user.id);
             })
         )
         .catch(err => console.log(err))

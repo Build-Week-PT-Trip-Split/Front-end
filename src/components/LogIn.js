@@ -48,7 +48,7 @@ const LogInWithFormik = withFormik({
     }),
 
     handleSubmit(values, {props}) {
-        console.log(props)
+        console.log("Login: ", props)
         let history = props.history;
         let location = props.location;
         let { from } = location.state || { from: { pathname: "/" } };
@@ -61,6 +61,7 @@ const LogInWithFormik = withFormik({
             localStorage.setItem('token', res.data.token);
             history.replace(from);
             props.setAuth(true);
+            localStorage.setItem('userID', res.data.user.id);
         })
         .catch(error => console.log(error));
     }
