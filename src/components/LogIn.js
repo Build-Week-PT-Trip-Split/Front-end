@@ -3,6 +3,8 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {getCurrentUser} from '../actions/index.js';
 
 const LogIn = ({values, errors, touched}) => {
 
@@ -48,7 +50,7 @@ const LogInWithFormik = withFormik({
     }),
 
     handleSubmit(values, {props}) {
-        console.log(props)
+        console.log("Login: ", props)
         let history = props.history;
         let location = props.location;
         let { from } = location.state || { from: { pathname: "/" } };
@@ -61,6 +63,7 @@ const LogInWithFormik = withFormik({
             localStorage.setItem('token', res.data.token);
             history.replace(from);
             props.setAuth(true);
+            props.dispatch(getCurrentUser(res.data.user))
         })
         .catch(error => console.log(error));
     }
@@ -70,7 +73,9 @@ const LogInWithFormik = withFormik({
 
 })(LogIn)
 
-export default LogInWithFormik;
+const LogInHOC = connect()(LogInWithFormik);
+
+export default LogInHOC;
 
 
 // API Calls 

@@ -18,6 +18,9 @@ export const GET_EXPENSES_START = "GET_EXPENSES_START";
 export const GET_EXPENSES_SUCCESS = "GET_EXPENSES_SUCCESS";
 export const GET_EXPENSES_FAIL = "GET_EXPENSES_FAIL";
 
+// Current User Reducer Action Variables
+
+export const GET_CURRENT_USER = "GET_CURRENT_USER";
 
 export const getUsers = () => (dispatch) => {
     console.log("getUsers Fired")
@@ -48,4 +51,10 @@ export const getExpenses = () => (dispatch) => {
                 dispatch({type: GET_EXPENSES_SUCCESS, payload: res.data})
             })
             .catch((err) => dispatch({type: GET_EXPENSES_FAIL, payload: err}));
+}
+
+export const getCurrentUser = (user) => (dispatch) => {
+    console.log("getCurrentUser Fired")
+    dispatch({type: GET_CURRENT_USER, payload: user})
+    console.log(user)
 }

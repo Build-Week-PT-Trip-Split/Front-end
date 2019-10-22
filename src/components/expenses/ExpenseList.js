@@ -4,7 +4,6 @@ import ExpenseCard from './ExpenseCard';
 import {getExpenses} from '../../actions/index.js';
 
 const ExpenseList = props => {
-    console.log(props)
     React.useEffect(() => {
         props.getExpenses();
     }, []);
