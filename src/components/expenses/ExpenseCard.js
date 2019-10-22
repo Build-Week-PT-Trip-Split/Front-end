@@ -7,7 +7,6 @@ const ExpenseCard = ({exp}) => {
 
     return (
         <div className='expenseCard'>
-            <h3>Expense:</h3>
             <Link to={`/expense/${id}`}>
                 <h3>{expense_name}</h3>
             </Link>
