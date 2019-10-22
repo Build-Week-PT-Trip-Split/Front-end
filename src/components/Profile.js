@@ -1,16 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const Profile = (props) => {
 
-    const [user, setUser] = React.useState({"id":1,"name":"Mario","username":"mario1","password":"pass","email":"test@gmail.com"});
-
-    // React.useEffect(() => {
-
-    //     setUser();
-
-    // }, []);
-
-    const { name, username, email, img } = user;
+    const { name, username, email, img } = props.user;
 
     return (
         <div className='container'>
@@ -22,4 +15,10 @@ const Profile = (props) => {
     );
 };
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+        user: state.currentUserReducer.currentUser
+    }
+}
+
+export default connect(mapStateToProps, {})(Profile);
