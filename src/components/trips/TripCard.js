@@ -1,14 +1,14 @@
 import React from 'react'
-import ExpenseList from '../expenses/ExpenseList';
+import { Link } from 'react-router-dom';
 
 const TripCard = (props) => {
     return (
         <div>
-            <h1>{props.trip.name}</h1>
+            <Link to={`/trip/${id}`}>
+                <h1>{props.trip.name}</h1>
+            </Link>
             <img src={props.trip.img} alt="" />
             <p>Date of Trip: {props.trip.date}</p>
-            <ExpenseList trip={props.trip}/>
-            <p>Cost: {props.trip.base_cost}</p>
             <button>Edit Trip</button>
         </div>
     )
