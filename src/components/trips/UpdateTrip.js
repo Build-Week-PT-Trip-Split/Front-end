@@ -26,7 +26,12 @@ const UpdateTrip = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axiosWithAuth().put(`/trips/${tripId}`, updatedTrip)
+        console.log(updatedTrip)
+        axiosWithAuth().put(`/trips/${tripId}`, {
+            name: updatedTrip.name,
+            date: updatedTrip.date,
+            base_cost: updatedTrip.base_cost
+        })
             .then((res) => {
                 console.log(res)
                 props.history.push("/trips")
@@ -35,14 +40,15 @@ const UpdateTrip = (props) => {
     }
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="name">Trip Name</Label>
                 <Input 
                     type="text" 
                     name="name"
                     value={updatedTrip.name} 
-                    placeholder="Trip Name" />
+                    placeholder="Trip Name"
+                    onChange={handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="date">Date of Trip</Label>
@@ -50,7 +56,8 @@ const UpdateTrip = (props) => {
                     type="text" 
                     name="date"
                     value={updatedTrip.date} 
-                    placeholder="Date - dd/mm/yyyy" />
+                    placeholder="Date - dd/mm/yyyy"
+                    onChange={handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="base_cost">Cost of Trip</Label>
@@ -58,7 +65,8 @@ const UpdateTrip = (props) => {
                     type="text" 
                     name="base_cost"
                     value={updatedTrip.base_cost}
-                    placeholder="Base Cost" />
+                    placeholder="Base Cost"
+                    onChange={handleChange} />
           </FormGroup>
           <Button>Update Trip</Button>
         </Form>
