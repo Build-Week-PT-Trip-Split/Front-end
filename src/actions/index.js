@@ -39,7 +39,7 @@ export const getTrips = () => (dispatch) => {
     dispatch({type: GET_TRIPS_START})
     axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/trips')
             .then((res) => {
-                dispatch({type: GET_TRIPS_SUCCESS, payload: res.data})
+                dispatch({type: GET_TRIPS_SUCCESS, payload: res.data.filter(trip => trip.user_id === Number(localStorage.getItem("userID")))})
             })
             .catch((err) => dispatch({type: GET_TRIPS_FAIL, payload: err}));
 }
