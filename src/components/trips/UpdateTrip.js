@@ -1,33 +1,74 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import axiosWithAuth from '../../utils/axiosAuth.js';
+import {connect} from 'react-redux';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-const UpdateTrip = () => {
+const UpdateTrip = (props) => {
+    const [updatedTrip, setUpdatedTrip] = useState({name: "", date: "", base_cost: ""});
+    console.log(props);
+    
+    const {match, trips} = props;
+    const tripId = match.params.id;
+    
+    useEffect(() => {
+        const tripToUpdate = trips.find(trip => {
+            return `${trip.id}` === tripId;
+        });
+
+        if(tripToUpdate) {
+            setUpdatedTrip(tripToUpdate);
+        }
+    }, [match, trips]);
+
+    const handleChange = (event) => {
+        setUpdatedTrip({...updatedTrip, [event.target.name]: event.target.value})
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axiosWithAuth().put(`/trips/${tripId}`, updatedTrip)
+            .then((res) => {
+                console.log(res)
+                props.history.push("/trips")
+                })
+            .catch((err) => console.log(err))
+    }
+
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <input 
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        value={tripInfo.name}
-                        onChange={handleChange}></input>
-                    <input 
-                        type="text"
-                        name="date"
-                        placeholder="Date - dd/mm/yyyy"
-                        value={tripInfo.date}
-                        onChange={handleChange}></input>
-                    <input
-                        type="text"
-                        name="base_cost"
-                        placeholder="Base Cost"
-                        value={tripInfo.base_cost}
-                        onChange={handleChange}></input>
-                    <button>Add Trip</button>
-                </form>
-            </div>
-        </div>
-    )
+        <Form>
+          <FormGroup>
+            <Label for="name">Trip Name</Label>
+                <Input 
+                    type="text" 
+                    name="name"
+                    value={updatedTrip.name} 
+                    placeholder="Trip Name" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="date">Date of Trip</Label>
+                <Input 
+                    type="text" 
+                    name="date"
+                    value={updatedTrip.date} 
+                    placeholder="Date - dd/mm/yyyy" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="base_cost">Cost of Trip</Label>
+                <Input 
+                    type="text" 
+                    name="base_cost"
+                    value={updatedTrip.base_cost}
+                    placeholder="Base Cost" />
+          </FormGroup>
+          <Button>Update Trip</Button>
+        </Form>
+      );
 }
 
-export default UpdateTrip
+const mapStateToProps = (state) => {
+    return {
+        trips: state.tripReducer.trips
+    }
+}
+
+export default connect(mapStateToProps, {})(UpdateTrip);
