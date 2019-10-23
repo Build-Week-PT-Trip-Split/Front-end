@@ -4,8 +4,10 @@ import {getCurrentUser} from '../actions/index.js';
 
 const Profile = (props) => {
 
+    const userID = localStorage.getItem("userID")
+
     useEffect(() => {
-        props.getCurrentUser(localStorage.getItem("userID"));
+        props.getCurrentUser(userID);
     }, [])
 
     const { name, username, email, img } = props.user;
