@@ -13,11 +13,9 @@ const TripsList = (props) => {
     return (
         <div>
             <h1>Trips</h1>
-            <Link to="/new/trip">Add Trip</Link>
-            
-            {props.trips.map((trip) => {
-                return <TripCard key={trip.id} trip={trip} />
-            })}
+            <Link to="/new/trip">Add Trip</Link> 
+            {props.trips.map((trip) => trip.user_id === Number(localStorage.getItem("userID")) ? <TripCard key={trip.id} trip={trip} /> : null
+            )}
         </div>
     )
 }

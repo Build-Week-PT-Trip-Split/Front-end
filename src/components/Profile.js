@@ -4,7 +4,7 @@ import {getCurrentUser} from '../actions/index.js';
 
 const Profile = (props) => {
 
-    const userID = localStorage.getItem("userID")
+    const userID = Number(localStorage.getItem("userID"))
 
     useEffect(() => {
         props.getCurrentUser(userID);
