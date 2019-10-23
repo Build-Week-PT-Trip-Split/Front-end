@@ -25,5 +25,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {getExpenses})(ExpenseList);
-
-// expense.trip_id === props.trip.id ? <ExpenseCard key={expense.id} exp={expense} /> : null
