@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 import {Navbar, NavbarBrand} from 'reactstrap';
@@ -19,9 +19,9 @@ export default function NavBar(props) {
                 {/* Shows nav with logout button only when you're logged in */}
                 {props.isAuthenticated ? 
                 <div className="navbar-links">
-                    <Link to='/trips'>My Trips</Link>
-                    <Link to='/friends'>My Friends</Link>
-                    <Link to='/profile'>My Profile</Link>
+                    <NavLink to='/trips' activeClassName="activeNavButton">My Trips</NavLink>
+                    <NavLink to='/friends' activeClassName="activeNavButton">My Friends</NavLink>
+                    <NavLink to='/profile' activeClassName="activeNavButton">My Profile</NavLink>
                     <a href="" onClick={handleLogout}>Logout</a>
                 </div> : <React.Fragment></React.Fragment> }
             </Navbar>

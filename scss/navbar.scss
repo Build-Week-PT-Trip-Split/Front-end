@@ -1,0 +1,39 @@
+.navbar {
+    background-color: $dark-blue;
+    display: flex;
+    justify-content: space-between;
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        img {
+            height: 60px;
+            width: 60px;
+        }
+        span {
+            color: white;
+            font-size: 40px;
+            margin-left: 20px;
+        }
+    }
+    .navbar-links {
+        min-width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            color: $light-grey;
+            font-size: 20px;
+            margin: 0 10px;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        .activeNavButton {
+            color: $teal;
+            font-weight: 500;
+        }
+        @media(max-width: 800px) {
+            display: none;
+        }
+    }
+}

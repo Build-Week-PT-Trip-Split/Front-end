@@ -30,7 +30,6 @@ function App(props) {
   return (
     <div className="App">
       <Nav setAuth={setAuth} isAuthenticated={isAuthenticated}/>
-      <h1>Trip Split</h1>
       <Route path="/signup" render={props => isAuthenticated ? props.history.push('/trips') : <SignUp {...props} setAuth={setAuth} isAuthenticated={isAuthenticated}/>
       } />
       <Route path="/login" render={props => isAuthenticated ? props.history.push('/trips') : <LogIn {...props} setAuth={setAuth} isAuthenticated={isAuthenticated}/>} />
