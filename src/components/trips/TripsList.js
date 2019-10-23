@@ -14,10 +14,10 @@ const TripsList = (props) => {
         <div>
             <h1>Current Trips</h1>
             <Link to="/new/trip">Add Trip</Link>
-            {props.trips.map((trip) => trip.complete === 1 ? <TripCard key={trip.id} trip={trip} /> : null
+            {props.trips.map((trip) => trip.complete === 0 ? <TripCard key={trip.id} trip={trip} /> : null
             )}
             <h1>Past Trips</h1>
-            {props.trips.map((trip) => trip.complete === 0 ? <TripCard key={trip.id} trip={trip} /> : null
+            {props.trips.map((trip) => trip.complete === 1 ? <TripCard key={trip.id} trip={trip} /> : null
             )}
         </div>
     )
