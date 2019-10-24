@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 import ExpenseList from '../expenses/ExpenseList';
 
 const TripCard = (props) => {
@@ -9,7 +10,7 @@ const TripCard = (props) => {
             <p>Date of Trip: {props.trip.date}</p>
             <ExpenseList trip={props.trip}/>
             <p>Cost: {props.trip.base_cost}</p>
-            <button>Edit Trip</button>
+            <button><Link to={`/edit/trip/${props.trip.id}`}>Edit Trip</Link></button>
         </div>
     )
 }
