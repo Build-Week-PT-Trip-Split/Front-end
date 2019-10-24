@@ -1,0 +1,48 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+   }
+
+.error {
+    color: $red;
+        padding-top: .5rem;
+        font-size: 1.2rem;
+}
+
+.forgotPassword {
+    color: $white;
+    font-size: 1.3rem;
+}
+
+
+.fieldInput {
+    border-radius: 5px;
+    width: 22rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 1px solid $white;
+    padding: 1rem;
+    font-size: 2rem;
+    color: $white;
+    margin: 1rem;
+}
+
+.formBtn {
+    border-radius: 3rem;
+    background: $teal;
+    height: 5rem;
+    width: 15rem;
+    display: block;
+    margin: 1rem auto;
+    font-size: 2rem;
+}
+
+.form__para {
+    color: $white;
+    font-size: 1.2rem;
+
+    a {
+        color: $white;
+    }
+}

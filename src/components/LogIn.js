@@ -7,27 +7,24 @@ import { Link } from 'react-router-dom';
 const LogIn = ({values, errors, touched}) => {
 
     return (
-        <div>
-            <h2> This is log in component</h2>
-            <Form className="loginForm">
+        <div className="loginForm">
+            <Form>
                 <label>
-                    Username: 
-                    <Field type="text" name="username" placeholder="username"  />
+                    <Field type="text" name="username" placeholder="username" className="fieldInput" />
                     {touched.username && errors.username && (
                     <p className="error"> {errors.username} </p>
                      )}
                 </label>
                 <label>
-                    Password: 
-                    <Field type="password" name="password" placeholder="password"  />
+                    <Field type="password" name="password" placeholder="password" className="fieldInput" />
                     {touched.password && errors.password && (
                     <p className="error"> {errors.password} </p>
                      )}
                 </label>
-                <button className="loginButton">Log In</button>
+                <button className="formBtn">Log In</button>
             </Form>
-            <p>Don't have an account? <Link to="signup">Sign Up</Link></p>
-           <button>Forgot Password</button>
+            <p className="form__para" >Don't have an account? <Link to="signup">Sign Up</Link></p>
+           <p className="forgotPassword">Forgot your Password?</p>
         </div>
     );
 };
@@ -74,5 +71,4 @@ const LogInWithFormik = withFormik({
 export default LogInWithFormik;
 
 
-// API Calls 
-// https://tripsplitr.herokuapp.com/
+

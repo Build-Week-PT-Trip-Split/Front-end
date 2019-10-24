@@ -9,25 +9,25 @@ const SignUp = props => {
     return (
         <div className="user-form">
             <Form>
-                <Field type="text" name="name" placeholder="Full Name" />
+                <Field type="text" name="name" placeholder="Full Name" className="fieldInput" />
                 {props.touched.name && props.errors.name && (
                     <p className="error">{props.errors.name}</p>
                 )}
-                <Field type="text" name="email" placeholder="Email Address" />
+                <Field type="text" name="email" placeholder="Email Address" className="fieldInput" />
                 {props.touched.email && props.errors.email && (
                     <p className="error">{props.errors.email}</p>
                 )}
-                <Field type="text" name="username" placeholder="Create Username" />
+                <Field type="text" name="username" placeholder="Create Username" className="fieldInput" />
                 {props.touched.username && props.errors.username && (
                     <p className="error">{props.errors.username}</p>
                 )}
-                <Field type="password" name="password" placeholder="Create Password" />
+                <Field type="password" name="password" placeholder="Create Password" className="fieldInput" />
                 {props.touched.password && props.errors.password && (
                     <p className="error">{props.errors.password}</p>
                 )}
-                <button type="submit">Submit</button>
+                <button className="formBtn" type="submit">Submit</button>
             </Form>
-            <p>Already have an account? <Link to="login">Log In</Link></p>
+            <p className="form__para">Already have an account? <Link to="login">Log In</Link></p>
         </div>
     );
 };
