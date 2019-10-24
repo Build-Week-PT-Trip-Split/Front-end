@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-// import {connect} from 'react-redux';
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrips} from '../../actions/index.js';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 const AddTrip = (props) => {
     const [tripInfo, setTripInfo] = useState({name: "", date: "", base_cost: ""});
@@ -23,30 +23,38 @@ const AddTrip = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text"
-                    name="name"
-                    placeholder="Name"
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label for="name">Trip Name</Label>
+                <Input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Trip Name"
                     value={tripInfo.name}
-                    onChange={handleChange}></input>
-                <input 
-                    type="text"
-                    name="date"
+                    onChange={handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="date">Date of Trip</Label>
+                <Input 
+                    type="text" 
+                    name="date" 
                     placeholder="Date - dd/mm/yyyy"
                     value={tripInfo.date}
-                    onChange={handleChange}></input>
-                <input
-                    type="text"
-                    name="base_cost"
+                    onChange={handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="base_cost">Cost of Trip</Label>
+                <Input 
+                    type="text" 
+                    name="base_cost" 
                     placeholder="Base Cost"
                     value={tripInfo.base_cost}
-                    onChange={handleChange}></input>
-                <button>Add Trip</button>
-            </form>
-        </div>
-    )
+                    onChange={handleChange} />
+          </FormGroup>
+          <Button>Add Trip</Button>
+        </Form>
+      );
+
 }
 
 export default AddTrip

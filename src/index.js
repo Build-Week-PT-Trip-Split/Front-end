@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import rootReducer from './reducers/index.js';
 import thunk from 'redux-thunk';
 import logger from "redux-logger";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
