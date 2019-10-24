@@ -5,7 +5,6 @@ import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrip} from '../../actions/index.js';
 
 const TripDetail = (props) => {
-    const id = props.match.params.id
     const trip = props.trips.find((item) => {
         return `${item.id} === props.match.params.id`
     });
@@ -21,7 +20,7 @@ const TripDetail = (props) => {
     }
 
     useEffect(() => {
-        props.getTrip(id);
+        props.getTrip(props.id);
     }, [])
 
     console.log(props)
