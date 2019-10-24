@@ -9,7 +9,7 @@ const AddTrip = (props) => {
             name: "", 
             date: "", 
             base_cost: "",
-            completed: 0
+            complete: 0
         });
     console.log(tripInfo)
     
