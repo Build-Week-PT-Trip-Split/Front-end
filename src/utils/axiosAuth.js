@@ -4,7 +4,7 @@ const axiosWithAuth = () => {
     const token = localStorage.getItem("token");
 
     return axios.create({
-        baseURL: 'https://tripsplitr.herokuapp.com',
+        baseURL: 'https://tripsplit-1022.herokuapp.com/',
         headers: {
             Authorization: token
         }
