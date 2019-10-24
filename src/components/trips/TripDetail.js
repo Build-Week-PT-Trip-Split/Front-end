@@ -5,11 +5,13 @@ const TripDetail = (props) => {
     return (
         <div>
             <h1>{props.trip.name}</h1>
-            if(props.trip.complete == 1){
-                <h3>Status: <span className='completed'>Completed</span></h3>
-            }else{
-                <h3>Status: <span className='open'>Open</span></h3>
-            }
+            {(() => {
+                if (props.trip.complete == 1) {
+                    return (<h3>Status: <span className='completed'>Completed</span></h3>)
+                } else {
+                    return (<h3>Status: <span className='open'>Open</span></h3>)
+                }
+            })()}
             <img src={props.trip.img} alt="" />
             <p>Date of Trip: {props.trip.date}</p>
             <ExpenseList trip={props.trip} />
