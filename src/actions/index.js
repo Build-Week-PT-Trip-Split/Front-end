@@ -27,7 +27,7 @@ export const GET_CURRENT_USER_FAIL = "GET_CURRENT_USER_FAIL";
 export const getUsers = () => (dispatch) => {
     console.log("getUsers Fired")
     dispatch({type: GET_USERS_START})
-    axiosWithAuth().get('https://tripsplitr.herokuapp.com/users')
+    axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/users')
             .then((res) => {
                 dispatch({type: GET_USERS_SUCCESS, payload: res.data})
             })
@@ -37,7 +37,7 @@ export const getUsers = () => (dispatch) => {
 export const getTrips = () => (dispatch) => {
     console.log("getTrips Fired")
     dispatch({type: GET_TRIPS_START})
-    axiosWithAuth().get('https://tripsplitr.herokuapp.com/trips')
+    axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/trips')
             .then((res) => {
                 // console.log(res.data)
                 dispatch({type: GET_TRIPS_SUCCESS, payload: res.data})
@@ -48,7 +48,7 @@ export const getTrips = () => (dispatch) => {
 export const getExpenses = () => (dispatch) => {
     console.log("getExpenses Fired")
     dispatch({type: GET_EXPENSES_START})
-    axiosWithAuth().get('https://tripsplitr.herokuapp.com/expenses')
+    axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/expenses')
             .then((res) => {
                 dispatch({type: GET_EXPENSES_SUCCESS, payload: res.data})
             })
@@ -58,7 +58,7 @@ export const getExpenses = () => (dispatch) => {
 export const getCurrentUser = (userID) => (dispatch) => {
     console.log("getCurrentUser Fired")
     dispatch({type: GET_CURRENT_USER_START})
-    axiosWithAuth().get(`https://tripsplitr.herokuapp.com/users/${userID}`)
+    axiosWithAuth().get(`https://tripsplit-1022.herokuapp.com/users/${userID}`)
             .then((res) => {
                 dispatch({type: GET_CURRENT_USER_SUCCESS, payload: res.data})
             })

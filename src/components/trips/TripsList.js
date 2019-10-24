@@ -7,10 +7,8 @@ import {getTrips} from '../../actions/index.js';
 import TripCard from './TripCard.js';
 
 const TripsList = (props) => {
-    console.log("In TripsList", props)
-    
     useEffect(() => {
-        console.log("In useEffect")
+        console.log("In useEffect TripsList")
         props.getTrips();
     }, [])
     
@@ -27,7 +25,6 @@ const TripsList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         trips: state.tripReducer.trips
     }

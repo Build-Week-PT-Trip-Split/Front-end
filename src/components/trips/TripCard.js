@@ -6,6 +6,7 @@ import ExpenseList from '../expenses/ExpenseList';
 
 
 const TripCard = (props) => {
+    console.log("In TripCard", props)
     return (
         <div>
             <Link to={`/trip/${props.trip.id}`}>
