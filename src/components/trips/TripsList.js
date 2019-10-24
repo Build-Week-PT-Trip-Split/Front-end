@@ -13,7 +13,7 @@ const TripsList = (props) => {
     return (
         <div>
             <h1>Current Trips</h1>
-            <Link to="/new/trip">Add Trip</Link>
+            <Link to="/trips/new">Add Trip</Link>
             {props.trips.map((trip) => trip.complete === 0 ? <TripCard key={trip.id} trip={trip} /> : null
             )}
             <h1>Past Trips</h1>

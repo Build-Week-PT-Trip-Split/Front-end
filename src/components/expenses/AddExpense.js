@@ -1,53 +1,50 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-import axios from "axios";
+import axiosWithAuth from '../../utils/axiosAuth.js';
+import {getExpenses} from '../../actions/index.js';
 
 const AddExpense = props => {
-    
-    const [expense, setExpense] = React.useState([]);
-
-    React.useEffect(() => {
-        if (props.status) {
-            setExpense([...expense, props.status]);
-        }
-    }, [props.status]);
 
     return (
         <div className='addExpense'>
             <Form>
-                <Field tpye='text' name='name' placeholder='What did you pay for?' />
-                <Field tpye='text' name='amount' placeholder='How much was it?' />
-                <Field tpye='text' name='paid' placeholder='Who Paid?' />
+                <Field tpye='text' name='expense_name' placeholder='What did you pay for?' />
+                <Field tpye='text' name='total_expense_price' placeholder='How much was it?' />
+                <Field tpye='text' name='primary_paid' placeholder='Who Paid?' />
                 <button type='submit'>Submit</button>
             </Form>
-            {expense.map(exp => (
+            {/* {expense.map(exp => (
                 <ul key={exp.id}>
                     <li>Expense: {exp.name}</li>
                     <li>Amount: {exp.amount}</li>
                     <li>Primary: {exp.primary_paid}</li>
                 </ul>
-            ))}
+            ))} */}
         </div>
     );
 
 };
 
-const myMapPropsToValues = props => {
+const myMapPropsToValues = (props) => {
+    console.log(props)
     const returnObj = {
-        expense_name: props.name || "",
-        total_expense_price: props.amount || "",
-        primary_paid: props.paid || "",
+        expense_name: props.expense_name || "",
+        total_expense_price: props.total_expense_price || "",
+        primary_paid: props.primary_paid || "",
+        trip_id: props.match.params.id
     };
     return returnObj;
 }
 
-const myHandleSubmit = (values, { setStatus }) => {
-    axios
-        
-        .then(res => {
-            setStatus(res.data);
-        })
-        .catch(err => console.error(err));
+const myHandleSubmit = (values, {props}) => {
+    console.log(values)
+        axiosWithAuth().post('/expenses', values)
+            .then((res) => {
+                console.log(res)
+                getExpenses();
+                props.history.push(`/trips/${props.match.params.id}`)
+                })
+            .catch((err) => console.log(err))
 };
 
 const formikObj = {
