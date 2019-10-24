@@ -16,7 +16,6 @@ const ExpenseDetail = ({expDetail}) => {
             <p>Trip Name: {tripName} </p>
             <p>Number of Peopl Participated: {tripParticipants} </p>
             <p>Cost Per Participant: {total_expense_price/tripParticipants} </p>
-            detail
         </div>
     );
 };
