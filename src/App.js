@@ -42,9 +42,9 @@ function App(props) {
       <Route path="/login" render={props => isAuthenticated ? props.history.push('/trips') : <LogIn {...props} setAuth={setAuth} isAuthenticated={isAuthenticated}/>} />
       {/* This following route makes sure you get redirected correctly as soon as you load the app */}
       <PrivateRoute path='/' exact component={TripsList} />
-      <PrivateRoute path="/trips" component={TripsList}/>
+      <PrivateRoute exact path="/trips" component={TripsList}/>
 
-      <PrivateRoute path="/trip/:id" component={TripDetail} />
+      <PrivateRoute path="/trips/:id" component={TripDetail} />
 
       <PrivateRoute path="/new/trip" component={AddTrip} />
       <PrivateRoute path="/edit/trip/:id" component={UpdateTrip} />

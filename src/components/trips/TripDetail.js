@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux';
 import ExpenseList from '../expenses/ExpenseList';
 import axiosWithAuth from '../../utils/axiosAuth.js';
-import {getTrips} from '../../actions/index.js';
+import {getTrip} from '../../actions/index.js';
 
 const TripDetail = (props) => {
+    const id = props.match.params.id
     const trip = props.trips.find((item) => {
         return `${item.id} === props.match.params.id`
     });
@@ -19,9 +20,17 @@ const TripDetail = (props) => {
             .catch((err) => console.log(err));
     }
 
+    useEffect(() => {
+        props.getTrip(id);
+    }, [])
+
+    console.log(props)
+
     return (
         <div>
-            <h1>{props.trips.name}</h1>
+            {props.trip ? 
+            <React.Fragment>
+            <h1>{props.trip.name}</h1>
             {(() => {
                 if (props.trips.complete == 1) {
                     return (<h3>Status: <span className='completed'>Completed</span></h3>)
@@ -41,16 +50,19 @@ const TripDetail = (props) => {
                     </div>
                 )
             })} */}
+        </React.Fragment> :
+            <p>Loading...</p>}
             <button>Edit Trip</button>
             <button onClick={deleteTrip}>Delete Trip</button>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+    const id = Number(props.match.params.id)
     return {
-        trips: state.tripReducer.trips
+        trip: (state.tripReducer.trips.filter(trip => trip.id === id))[0]
     }
 }
 
-export default connect(mapStateToProps, {getTrips})(TripDetail);
+export default connect(mapStateToProps, {getTrip})(TripDetail);

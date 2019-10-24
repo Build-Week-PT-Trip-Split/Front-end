@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
     userReducer: userReducer,
     tripReducer: tripReducer,
     expenseReducer: expenseReducer,
-    currentUserReducer: currentUserReducer
+    currentUserReducer: currentUserReducer,
 })
 
 export default rootReducer;
