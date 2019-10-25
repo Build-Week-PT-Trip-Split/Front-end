@@ -9,7 +9,8 @@ const AddTrip = (props) => {
             name: "", 
             date: "", 
             base_cost: "",
-            complete: 0
+            complete: 0,
+            user_id: localStorage.getItem("userID")
         });
     
     const handleChange = (event) => {
