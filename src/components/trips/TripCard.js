@@ -1,16 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import {Container, Row, Col} from 'reactstrap';
 import ExpenseList from '../expenses/ExpenseList';
+
 
 const TripCard = (props) => {
     return (
-        <div>
-            <h1>{props.trip.name}</h1>
-            <img src={props.trip.img} alt="" />
-            <p>Date of Trip: {props.trip.date}</p>
-            <ExpenseList trip={props.trip}/>
-            <p>Cost: {props.trip.base_cost}</p>
-            <button>Edit Trip</button>
-        </div>
+        <Container className="card-container">
+                <div className="img-wrapper">
+                    <img src={props.trip.img} alt="" />
+                </div>
+                <div className="card-content">
+                <Link to={`/trip/${props.trip.id}`}>
+                    <h1>{props.trip.name}</h1>
+                </Link>
+                <p>Date of Trip: {props.trip.date}</p>
+                <p>Cost: {props.trip.base_cost}</p>
+                <button><Link to={`/edit/trip/${props.trip.id}`}>Edit Trip</Link></button>
+                </div>
+                
+        </Container>
     )
 }
 
