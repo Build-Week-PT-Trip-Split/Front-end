@@ -1,0 +1,22 @@
+.CardComponentStyle {
+    display: flex;
+    flex-flow: wrap;
+
+    div {
+        margin: 1rem auto;
+        width: 20rem;
+        background: $purple;
+        color: $white;
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-muted__color {
+            color: $white;
+        }
+    }
+}

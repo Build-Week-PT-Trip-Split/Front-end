@@ -10,8 +10,8 @@ const FriendCard = ({name, image, username, email}) => {
                 <CardBody>
                 <CardImg top width="100%" src={image} alt={name} />
                 <CardText className="cardFooter" >
-                    <small className="text-muted">{username}</small>
-                    <small className="text-muted">{email}</small>
+                    <div><small className="text-muted">Username: {username}</small></div>
+                    <div><small className="text-muted">Email: {email}</small></div>
                 </CardText>
                 </CardBody>
             </Card>

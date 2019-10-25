@@ -12,7 +12,7 @@ const FriendList = (props) => {
 
     return (
         <div>
-          <h1>Friend List Components</h1>
+          <h1>Friends</h1>
           <Button color="primary">Add New Friend</Button>
           <div className="CardComponentStyle">
             {props.users.map( (user) => {
