@@ -58,6 +58,7 @@ const TripDetail = (props) => {
             <button>
                 <Link to={`/trips/${props.id}/edit`}>Edit Trip</Link>
             </button>
+            <button onClick={deleteTrip}>Delete Trip</button>
         </div>
     )
 }
