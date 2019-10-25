@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const ExpenseDetail = ({expDetail}) => {
 
@@ -14,7 +15,7 @@ const ExpenseDetail = ({expDetail}) => {
             <p>Paid By: {primary_paid}</p>
             <p>Expense Created on: {created_at} </p>
             <p>Trip Name: {tripName} </p>
-            <p>Number of Peopl Participated: {tripParticipants} </p>
+            <p>Number of People Participated: {tripParticipants} </p>
             <p>Cost Per Participant: {total_expense_price/tripParticipants} </p>
         </div>
     );

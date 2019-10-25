@@ -2,13 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import {Container, Row, Col} from 'reactstrap';
 import ExpenseList from '../expenses/ExpenseList';
+import placeholder from '../../assets/no-picture-available-icon-1.jpg';
 
 
 const TripCard = (props) => {
     return (
         <Container className="card-container">
                 <div className="img-wrapper">
-                    <img src={props.trip.img} alt="" />
+                    {(props.trip.img) ? <img src={props.trip.img} alt="" /> : <img src={placeholder} alt="" />}
+                    
                 </div>
                 <div className="card-content">
                 <Link to={`/trip/${props.trip.id}`}>
