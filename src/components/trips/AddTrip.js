@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrips} from '../../actions/index.js';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const AddTrip = (props) => {
-    const [tripInfo, setTripInfo] = useState({name: "", date: "", base_cost: ""});
-    console.log(tripInfo)
+    const [tripInfo, setTripInfo] = useState(
+        {
+            name: "", 
+            date: "", 
+            base_cost: "",
+            complete: 0
+        });
     
     const handleChange = (event) => {
         setTripInfo({...tripInfo, [event.target.name]: event.target.value})

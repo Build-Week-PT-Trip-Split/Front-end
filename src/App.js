@@ -7,17 +7,19 @@ import {Route} from 'react-router-dom';
 
 // Import Components
 
+// Registration & Authentication
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 
+// Trips Components
 import AddTrip from './components/trips/AddTrip.js';
 import TripsList from './components/trips/TripsList.js';
-
 import TripDetail from './components/trips/TripDetail.js';
-
 import UpdateTrip from './components/trips/UpdateTrip.js';
 
+// Expenses Components
 import ExpenseList from './components/expenses/ExpenseList';
+
 import FriendList from './components/friends/FriendList';
 import Profile from './components/Profile';
 

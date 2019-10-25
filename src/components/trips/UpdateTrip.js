@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {connect} from 'react-redux';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const UpdateTrip = (props) => {
     const [updatedTrip, setUpdatedTrip] = useState({name: "", date: "", base_cost: ""});
-    console.log(props);
     
     const {match, trips} = props;
     const tripId = match.params.id;
@@ -26,7 +25,6 @@ const UpdateTrip = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(updatedTrip)
         axiosWithAuth().put(`/trips/${tripId}`, {
             name: updatedTrip.name,
             date: updatedTrip.date,
