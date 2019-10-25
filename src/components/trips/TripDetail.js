@@ -5,18 +5,14 @@ import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrips} from '../../actions/index.js';
 
 const TripDetail = (props) => {
-    console.log("axiosWithAuth", axiosWithAuth)
-
     const trip = props.trips.find((item) => {
         return `${item.id} === props.match.params.id`
     });
-    console.log(trip);
 
     const deleteTrip = (event) => {
         event.preventDefault();
         axiosWithAuth().delete(`/trips/${trip.id}`)
             .then((res) => {
-                console.log(res);
                 props.getTrips()
                 props.history.push("/trips")
             })
@@ -52,7 +48,6 @@ const TripDetail = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         trips: state.tripReducer.trips
     }

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux';
-import PrivateRoute from '../PrivateRoute.js';
 import {Link} from 'react-router-dom';
 import {getTrips} from '../../actions/index.js';
 
@@ -8,7 +7,6 @@ import TripCard from './TripCard.js';
 
 const TripsList = (props) => {
     useEffect(() => {
-        console.log("In useEffect TripsList")
         props.getTrips();
     }, [])
     

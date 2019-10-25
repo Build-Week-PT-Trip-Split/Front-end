@@ -39,7 +39,6 @@ export const getTrips = () => (dispatch) => {
     dispatch({type: GET_TRIPS_START})
     axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/trips')
             .then((res) => {
-                // console.log(res.data)
                 dispatch({type: GET_TRIPS_SUCCESS, payload: res.data})
             })
             .catch((err) => dispatch({type: GET_TRIPS_FAIL, payload: err}));

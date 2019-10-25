@@ -11,7 +11,6 @@ const AddTrip = (props) => {
             base_cost: "",
             complete: 0
         });
-    console.log(tripInfo)
     
     const handleChange = (event) => {
         setTripInfo({...tripInfo, [event.target.name]: event.target.value})
