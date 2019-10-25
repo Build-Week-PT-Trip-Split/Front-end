@@ -6,13 +6,10 @@ import {getTrip} from '../../actions/index.js';
 import {Link} from 'react-router-dom';
 
 const TripDetail = (props) => {
-    const trip = props.trips.find((item) => {
-        return `${item.id} === props.match.params.id`
-    });
 
     const deleteTrip = (event) => {
         event.preventDefault();
-        axiosWithAuth().delete(`/trips/${trip.id}`)
+        axiosWithAuth().delete(`/trips/${props.id}`)
             .then((res) => {
                 props.getTrips()
                 props.history.push("/trips")
@@ -64,9 +61,11 @@ const TripDetail = (props) => {
 }
 
 const mapStateToProps = (state, props) => {
+    console.log(props)
     const id = Number(props.match.params.id)
     return {
-        trip: (state.tripReducer.trips.filter(trip => trip.id === id))[0]
+        trip: (state.tripReducer.trips.filter(trip => trip.id === id))[0],
+        id: id
     }
 }
 

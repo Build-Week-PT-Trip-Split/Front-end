@@ -73,7 +73,7 @@ export const getCurrentUser = (userID) => (dispatch) => {
 export const getTrip = (tripID) => (dispatch) => {
     console.log("getTrip Fired")
     dispatch({type: GET_TRIP_START})
-    axiosWithAuth().get(`https://tripsplitr.herokuapp.com/trips/${tripID}`)
+    axiosWithAuth().get(`https://tripsplit-1022.herokuapp.com/trips/${tripID}`)
             .then((res) => {
                 // console.log(res.data)
                 dispatch({type: GET_TRIP_SUCCESS, payload: res.data})

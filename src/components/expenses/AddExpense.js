@@ -37,12 +37,12 @@ const myMapPropsToValues = (props) => {
 }
 
 const myHandleSubmit = (values, {props}) => {
-    console.log(values)
+    console.log(values, props)
         axiosWithAuth().post('/expenses', values)
             .then((res) => {
                 console.log(res)
                 getExpenses();
-                props.history.push(`/trips/${props.match.params.id}`)
+                props.history.push(`/trips/${values.trip_id}`)
                 })
             .catch((err) => console.log(err))
 };

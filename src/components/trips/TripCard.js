@@ -11,7 +11,7 @@ const TripCard = (props) => {
                 <img src={props.trip.img} alt="" />
             </div>
             <div className="card-content">
-                <Link to={`/trip/${props.trip.id}`}>
+                <Link to={`/trips/${props.trip.id}`}>
                     <h1>{props.trip.name}</h1>
                 </Link>
                 <p>Date of Trip: {props.trip.date}</p>
