@@ -61,11 +61,11 @@ const TripDetail = (props) => {
                 <Link to={`/trips/${props.id}/edit`}>Edit Trip</Link>
             </button>
             <button onClick={deleteTrip}>Delete Trip</button>
-            {/* {(() => {
+            {(() => {
                 if (props.trips.base_cost === 0) {
                     return (<button onClick={settleTrip}>Settle Trip</button>)
                 }
-            })()} */}
+            })()}
         </div>
     )
 }
