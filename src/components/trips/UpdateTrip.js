@@ -32,7 +32,7 @@ const UpdateTrip = (props) => {
         })
             .then((res) => {
                 console.log(res)
-                props.history.push("/trips")
+                props.history.push(`/trips/${tripId}`)
                 })
             .catch((err) => console.log(err))
     }
@@ -73,7 +73,7 @@ const UpdateTrip = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        trips: state.tripReducer.trips
+        trips: state.tripsReducer.trips
     }
 }
 
