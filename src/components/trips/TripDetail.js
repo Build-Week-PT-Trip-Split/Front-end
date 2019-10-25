@@ -19,11 +19,16 @@ const TripDetail = (props) => {
             .catch((err) => console.log(err));
     }
 
+    const settleTrip = (event) => {
+        event.preventDefault();
+        //set props.trips.complete = 1 or however you would do it in the backend.
+    }
+
     return (
         <div>
             <h1>{props.trips.name}</h1>
             {(() => {
-                if (props.trips.complete == 1) {
+                if (props.trips.complete === 1) {
                     return (<h3>Status: <span className='completed'>Completed</span></h3>)
                 } else {
                     return (<h3>Status: <span className='open'>Open</span></h3>)
@@ -43,6 +48,11 @@ const TripDetail = (props) => {
             })} */}
             <button>Edit Trip</button>
             <button onClick={deleteTrip}>Delete Trip</button>
+            {(() => {
+                if (props.trips.base_cost === 0) {
+                    return (<button onClick={settleTrip}>Settle Trip</button>)
+                }
+            })()}
         </div>
     )
 }
