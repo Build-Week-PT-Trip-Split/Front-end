@@ -35,7 +35,7 @@ function App(props) {
   console.log(isAuthenticated);
 
   return (
-    <div className="App">
+    <div className="App container">
       <Nav setAuth={setAuth} isAuthenticated={isAuthenticated}/>
       <Route path="/signup" render={props => isAuthenticated ? props.history.push('/trips') : <SignUp {...props} setAuth={setAuth} isAuthenticated={isAuthenticated}/>
       } />
