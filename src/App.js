@@ -18,8 +18,7 @@ import TripDetail from './components/trips/TripDetail.js';
 import UpdateTrip from './components/trips/UpdateTrip.js';
 
 // Expenses Components
-import ExpenseList from './components/expenses/ExpenseList';
-
+import AddExpense from './components/expenses/AddExpense';
 import FriendList from './components/friends/FriendList';
 import Profile from './components/Profile';
 
@@ -42,15 +41,15 @@ function App(props) {
       <Route path="/login" render={props => isAuthenticated ? props.history.push('/trips') : <LogIn {...props} setAuth={setAuth} isAuthenticated={isAuthenticated}/>} />
       {/* This following route makes sure you get redirected correctly as soon as you load the app */}
       <PrivateRoute path='/' exact component={TripsList} />
-      <PrivateRoute path="/trips" component={TripsList}/>
+      <PrivateRoute exact path="/trips" component={TripsList}/>
 
-      <PrivateRoute path="/trip/:id" component={TripDetail} />
+      <PrivateRoute exact path="/trips/:id" component={TripDetail} />
 
-      <PrivateRoute path="/new/trip" component={AddTrip} />
-      <PrivateRoute path="/edit/trip/:id" component={UpdateTrip} />
+      <PrivateRoute path="/trips/new" component={AddTrip} />
+      <PrivateRoute path="/trips/:id/expenses/new" component={AddExpense} />
+      <PrivateRoute path="/trips/:id/edit" component={UpdateTrip} />
 
       <PrivateRoute path="/friends" component={FriendList} />
-      <PrivateRoute path="/expenses" component={ExpenseList}/>
       <PrivateRoute path="/profile" component={Profile} />
     </div>
   );

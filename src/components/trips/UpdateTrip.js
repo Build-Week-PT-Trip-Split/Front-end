@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const UpdateTrip = (props) => {
-    const [updatedTrip, setUpdatedTrip] = useState({name: "", date: "", base_cost: ""});
+    const [updatedTrip, setUpdatedTrip] = useState({name: "", date: "", base_cost: 0});
     
     const {match, trips} = props;
     const tripId = match.params.id;
@@ -32,7 +32,7 @@ const UpdateTrip = (props) => {
         })
             .then((res) => {
                 console.log(res)
-                props.history.push("/trips")
+                props.history.push(`/trips/${tripId}`)
                 })
             .catch((err) => console.log(err))
     }

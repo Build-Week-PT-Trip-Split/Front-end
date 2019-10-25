@@ -18,7 +18,7 @@ const expenseReducer = (state = initialState, action) => {
         case GET_EXPENSES_SUCCESS:
             return {
                 ...state,
-                expenses: action.payload
+                expenses: action.payload,
             }
 
         case GET_EXPENSES_FAIL:
