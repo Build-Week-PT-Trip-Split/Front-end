@@ -8,8 +8,10 @@ const AddTrip = (props) => {
         {
             name: "", 
             date: "", 
-            base_cost: "",
-            complete: 0
+            base_cost: 0,
+            img: "",
+            complete: 0,
+            user_id: localStorage.getItem("userID")
         });
     
     const handleChange = (event) => {
@@ -45,15 +47,6 @@ const AddTrip = (props) => {
                     name="date" 
                     placeholder="Date - dd/mm/yyyy"
                     value={tripInfo.date}
-                    onChange={handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="base_cost">Cost of Trip</Label>
-                <Input 
-                    type="text" 
-                    name="base_cost" 
-                    placeholder="Base Cost"
-                    value={tripInfo.base_cost}
                     onChange={handleChange} />
           </FormGroup>
           <Button>Add Trip</Button>

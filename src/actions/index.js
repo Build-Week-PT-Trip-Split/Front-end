@@ -24,6 +24,12 @@ export const GET_CURRENT_USER_START = "GET_CURRENT_USER_START";
 export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER_SUCCESS";
 export const GET_CURRENT_USER_FAIL = "GET_CURRENT_USER_FAIL";
 
+// Single Trip Reducer Action Variables
+
+export const GET_TRIP_START = "GET_TRIP_START";
+export const GET_TRIP_SUCCESS = "GET_TRIP_SUCCESS";
+export const GET_TRIP_FAIL = "GET_TRIP_FAIL";
+
 export const getUsers = () => (dispatch) => {
     console.log("getUsers Fired")
     dispatch({type: GET_USERS_START})
@@ -39,7 +45,7 @@ export const getTrips = () => (dispatch) => {
     dispatch({type: GET_TRIPS_START})
     axiosWithAuth().get('https://tripsplit-1022.herokuapp.com/trips')
             .then((res) => {
-                dispatch({type: GET_TRIPS_SUCCESS, payload: res.data})
+                dispatch({type: GET_TRIPS_SUCCESS, payload: res.data.filter(trip => trip.user_id === Number(localStorage.getItem("userID")))})
             })
             .catch((err) => dispatch({type: GET_TRIPS_FAIL, payload: err}));
 }
@@ -62,4 +68,15 @@ export const getCurrentUser = (userID) => (dispatch) => {
                 dispatch({type: GET_CURRENT_USER_SUCCESS, payload: res.data})
             })
             .catch((err) => dispatch({type: GET_CURRENT_USER_FAIL, payload: err}));
+}
+
+export const getTrip = (tripID) => (dispatch) => {
+    console.log("getTrip Fired")
+    dispatch({type: GET_TRIP_START})
+    axiosWithAuth().get(`https://tripsplit-1022.herokuapp.com/trips/${tripID}`)
+            .then((res) => {
+                // console.log(res.data)
+                dispatch({type: GET_TRIP_SUCCESS, payload: res.data})
+            })
+            .catch((err) => dispatch({type: GET_TRIP_FAIL, payload: err}));
 }

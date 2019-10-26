@@ -12,12 +12,13 @@ const TripsList = (props) => {
     
     return (
         <div>
-            <h1>Trips</h1>
-            <Link to="/new/trip">Add Trip</Link>
-            
-            {props.trips.map((trip) => {
-                return <TripCard key={trip.id} trip={trip} />
-            })}
+            <h1>Current Trips</h1>
+            <Link to="/trips/new">Add Trip</Link>
+            {props.trips.map((trip) => trip.complete === 0 ? <TripCard key={trip.id} trip={trip} /> : null
+            )}
+            <h1>Past Trips</h1>
+            {props.trips.map((trip) => trip.complete === 1 ? <TripCard key={trip.id} trip={trip} /> : null
+            )}
         </div>
     )
 }
