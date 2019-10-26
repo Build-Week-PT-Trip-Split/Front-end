@@ -8,23 +8,24 @@ const LogIn = ({values, errors, touched}) => {
 
     return (
         <div className="loginForm">
+            <p>Enjoy your trip, Trip Split will do all the math for you</p>
             <Form>
                 <label>
-                    <Field type="text" name="username" placeholder="username" className="fieldInput" />
+                    <Field type="text" name="username" placeholder="Username" className="fieldInput" />
                     {touched.username && errors.username && (
                     <p className="error"> {errors.username} </p>
                      )}
                 </label>
                 <label>
-                    <Field type="password" name="password" placeholder="password" className="fieldInput" />
+                    <Field type="password" name="password" placeholder="Password" className="fieldInput" />
                     {touched.password && errors.password && (
                     <p className="error"> {errors.password} </p>
                      )}
                 </label>
                 <button className="formBtn">Log In</button>
-            </Form>
-            <p className="form__para" >Don't have an account? <Link to="signup">Sign Up</Link></p>
+                <p className="form__para" >Don't have an account? <Link to="signup">Sign Up</Link></p>
            <p className="forgotPassword">Forgot your Password?</p>
+            </Form>
         </div>
     );
 };

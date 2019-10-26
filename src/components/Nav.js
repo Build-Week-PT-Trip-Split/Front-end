@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Link, Route } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 import {Navbar, NavbarBrand} from 'reactstrap';
@@ -15,7 +15,12 @@ export default function NavBar(props) {
     return (
         <div>
             <Navbar>
-                <NavbarBrand><img src={Logo} alt='Trip Split Logo' /><span>Trip Split</span></NavbarBrand>
+                <NavbarBrand>
+                    <Link to="/">
+                        <img src={Logo} alt='Trip Split Logo' />
+                    </Link>
+                    <span>Trip Split</span>
+                </NavbarBrand>
                 {/* Shows nav with logout button only when you're logged in */}
                 {props.isAuthenticated ? 
                 <div className="navbar-links">

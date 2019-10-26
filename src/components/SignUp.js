@@ -8,6 +8,7 @@ const SignUp = props => {
 
     return (
         <div className="user-form">
+            <p>Enjoy your trip, Trip Split will do all the math for you</p>
             <Form>
                 <Field type="text" name="name" placeholder="Full Name" className="fieldInput" />
                 {props.touched.name && props.errors.name && (
@@ -17,17 +18,17 @@ const SignUp = props => {
                 {props.touched.email && props.errors.email && (
                     <p className="error">{props.errors.email}</p>
                 )}
-                <Field type="text" name="username" placeholder="Create Username" className="fieldInput" />
+                <Field type="text" name="username" placeholder="Username" className="fieldInput" />
                 {props.touched.username && props.errors.username && (
                     <p className="error">{props.errors.username}</p>
                 )}
-                <Field type="password" name="password" placeholder="Create Password" className="fieldInput" />
+                <Field type="password" name="password" placeholder="Password" className="fieldInput" />
                 {props.touched.password && props.errors.password && (
                     <p className="error">{props.errors.password}</p>
                 )}
                 <button className="formBtn" type="submit">Submit</button>
+                <p className="form__para">Already have an account? <Link to="login">Log In</Link></p>
             </Form>
-            <p className="form__para">Already have an account? <Link to="login">Log In</Link></p>
         </div>
     );
 };
