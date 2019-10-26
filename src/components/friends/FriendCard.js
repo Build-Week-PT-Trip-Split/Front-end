@@ -11,8 +11,8 @@ const FriendCard = ({name, image, username, email}) => {
                 <CardBody>
                 {(image) ? <CardImg top width="100%" src={image} alt="user photo" /> : <CardImg top width="100%" src={placeholder} alt="default photo" />}
                 <CardText className="cardFooter" >
-                    <div><small className="text-muted">Username: {username}</small></div>
-                    <div><small className="text-muted">Email: {email}</small></div>
+                    <div className="card-content"><p className="text-muted">Username: {username}</p></div>
+                    <div className="card-content"><p className="text-muted">Email: {email}</p></div>
                 </CardText>
                 </CardBody>
             </Card>
