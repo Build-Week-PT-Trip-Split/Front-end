@@ -46,7 +46,7 @@ const TripDetail = (props) => {
                     <button>
                         <Link to={`/trips/${props.id}/expenses/new`}>Add Expense</Link>
                     </button>
-                    <p>Cost: {props.trip.base_cost}</p>
+                    <p>Cost: {props.costs}</p>
                     {props.trip.participants ? props.trip.participants.map(part => {
                         return (
                             <div>
@@ -74,8 +74,15 @@ const mapStateToProps = (state, props) => {
     console.log(props)
     const id = Number(props.match.params.id)
     return {
-        trip: (state.tripReducer.trips.filter(trip => trip.id === id))[0],
-        id: id
+        trip: (state.tripReducer.trips.find(trip => trip.id === id)),
+        id: id,
+        costs: state.expenseReducer.expenses.reduce((acc, cv) => {
+            if (cv.trip_id === id) {
+                return acc += cv.total_expense_price;
+            } else {
+                return acc;
+            }   
+        }, 0)
     }
 }
 

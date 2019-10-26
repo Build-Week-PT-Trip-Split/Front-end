@@ -1,6 +1,7 @@
 html {
   font-size: 62.5%;
 }
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -16,19 +17,19 @@ body {
       monospace;
   }
 
-  .container {
-    background-image: linear-gradient(
-      to bottom, 
-      rgba($purple, 1) 0%,
-      rgba($purple, 1) 60%,
-      rgba($indigo, 1) 90%
-    );
-    height: 100vh;
+  // .container {
+  //   background-image: linear-gradient(
+  //     to bottom, 
+  //     rgba($purple, 1) 0%,
+  //     rgba($purple, 1) 60%,
+  //     rgba($indigo, 1) 90%
+  //   );
+  //   height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 
  
