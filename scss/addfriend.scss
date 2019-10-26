@@ -1,0 +1,33 @@
+
+.addFriend {
+    padding-top: 2rem;
+}
+.inputField {
+    width: 30rem;
+    height: 3rem;
+    border: 1px solid $indigo;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.dropField {
+    width: 30rem;
+    height: 3.5rem;
+    border: 1px solid $indigo;
+    border-radius: 1rem;
+    padding: .5rem;
+    font-size: 2rem;
+}
+
+.addFriendForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addFriendDrop {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
