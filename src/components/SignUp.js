@@ -49,10 +49,10 @@ const myHandleSubmit = (values, {props}) => {
     let history = props.history;
     let location = props.location;
     let { from } = location.state || { from: { pathname: "/" } };
-    axios.post(`https://tripsplitr.herokuapp.com/auth/register`, values)
+    axios.post(`https://tripsplit-1022.herokuapp.com/auth/register`, values)
     // API doesn't automatically log you in after registering, so another call is required for login
         .then(
-            axios.post(`https://tripsplitr.herokuapp.com/auth/login`, {
+            axios.post(`https://tripsplit-1022.herokuapp.com/auth/login`, {
                 username: values.username,
                 password: values.password
             })

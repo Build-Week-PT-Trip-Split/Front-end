@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import {Container, Row, Col} from 'reactstrap';
-import ExpenseList from '../expenses/ExpenseList';
 import placeholder from '../../assets/no-picture-available-icon-1.jpg';
 
 
