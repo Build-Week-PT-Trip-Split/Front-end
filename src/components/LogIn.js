@@ -24,7 +24,7 @@ const LogIn = ({values, errors, touched}) => {
                 </label>
                 <button className="formBtn">Log In</button>
                 <p className="form__para" >Don't have an account? <Link to="signup">Sign Up</Link></p>
-           <p className="forgotPassword">Forgot your Password?</p>
+           <a href="#" className="forgotPassword">Forgot your Password?</a>
             </Form>
         </div>
     );
