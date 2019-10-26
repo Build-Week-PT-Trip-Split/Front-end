@@ -1,13 +1,16 @@
-.navbar {
-    background-color: $dark-blue;
+.App > div > .navbar {
+    background: url('../src/assets/MARKETING\ PAGE\ BACKGROUND\ 2160x1024.png') center bottom fixed;
+    background-size: cover;
     display: flex;
     justify-content: space-between;
+    height: 15vh;
+    padding: 20px 30px;
     .navbar-brand {
         display: flex;
         align-items: center;
         img {
-            height: 60px;
-            width: 60px;
+            height: 70px;
+            width: 70px;
         }
         span {
             color: white;
