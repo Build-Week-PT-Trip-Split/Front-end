@@ -10,7 +10,7 @@ const Profile = (props) => {
         props.getCurrentUser(userID);
     }, [])
 
-    const { name, username, email, img } = props.user;
+    const { name, username, email, img, trips, friends } = props;
 
     return (
         <div className='container'>
@@ -18,6 +18,14 @@ const Profile = (props) => {
             <h1>{name}</h1>
             <h3>Username: {username}</h3>
             <div>Email: <a href={email}>{email}</a></div>
+            <div className='trips'>
+                <h3>Trips</h3>
+                <p>{trips.length}</p>
+            </div>
+            <div className='friends'>
+                <h3>Friends</h3>
+                <p>{friends.length}</p>
+            </div>
         </div>
     );
 };
