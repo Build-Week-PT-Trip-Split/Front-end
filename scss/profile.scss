@@ -1,0 +1,39 @@
+.profile_container {
+    display: flex;
+    justify-content: space-evenly;
+    
+    margin-top: 10%;
+
+    img {
+        width: 500px;
+    }
+
+    .profile_info {
+        display: flex;
+        flex-direction: column;
+        
+
+        h1 {
+            font-size: 75pt;
+            margin-top: 25px;
+        }
+
+        h3 {
+            margin: 25px 0;
+            font-size: 20pt;
+        }
+        
+        .link {
+            font-size: 12pt;
+        }
+
+        .info_more{
+            display: flex;
+            justify-content: space-around;
+
+            .num {
+                font-size: 30pt;
+            }
+        }
+    }
+}

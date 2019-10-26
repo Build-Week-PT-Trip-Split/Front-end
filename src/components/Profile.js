@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import {getCurrentUser} from '../actions/index.js';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getCurrentUser } from '../actions/index.js';
 
 const Profile = (props) => {
 
@@ -10,14 +10,26 @@ const Profile = (props) => {
         props.getCurrentUser(userID);
     }, [])
 
-    const { name, username, email, img } = props.user;
+    const { name, username, email, img, trips, friends } = props;
 
     return (
-        <div className='container'>
+        <div className='profile_container'>
             <img src={img} alt='Your profile photo' />
-            <h1>{name}</h1>
-            <h3>Username: {username}</h3>
-            <div>Email: <a href={email}>{email}</a></div>
+            <div className='profile_info'>
+                <h1>{name}</h1>
+                <h3>Username: {username}</h3>
+                <div className='link'>Email: <a href={email}>{email}</a></div>
+                <div className='info_more'>
+                    <div className='trips'>
+                        <h3>Trips</h3>
+                        <p>{trips.length}</p>
+                    </div>
+                    <div className='friends'>
+                        <h3>Friends</h3>
+                        <p>{friends.length}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
@@ -28,4 +40,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getCurrentUser})(Profile);
+export default connect(mapStateToProps, { getCurrentUser })(Profile);
