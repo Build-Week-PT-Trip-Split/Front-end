@@ -22,34 +22,36 @@ const AddTrip = (props) => {
         e.preventDefault();
         axiosWithAuth().post('/trips', tripInfo)
             .then((res) => {
-                console.log(res)
-                getTrips();
-                props.history.push("/trips")
+                console.log(res);
+                props.forceRender();
+                props.toggle();
                 })
             .catch((err) => console.log(err))
     }
 
+    console.log(props)
+
     return (
         <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label for="name">Trip Name</Label>
-                <Input 
-                    type="text" 
-                    name="name" 
-                    placeholder="Trip Name"
-                    value={tripInfo.name}
-                    onChange={handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="date">Date of Trip</Label>
-                <Input 
-                    type="text" 
-                    name="date" 
-                    placeholder="Date - dd/mm/yyyy"
-                    value={tripInfo.date}
-                    onChange={handleChange} />
-          </FormGroup>
-          <Button>Add Trip</Button>
+            <FormGroup>
+                <Label for="name">Trip Name</Label>
+                    <Input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Trip Name"
+                        value={tripInfo.name}
+                        onChange={handleChange} />
+            </FormGroup>
+            <FormGroup>
+                <Label for="date">Date of Trip</Label>
+                    <Input 
+                        type="text" 
+                        name="date" 
+                        placeholder="Date - dd/mm/yyyy"
+                        value={tripInfo.date}
+                        onChange={handleChange} />
+            </FormGroup>
+            <Button>Add Trip</Button>
         </Form>
       );
 

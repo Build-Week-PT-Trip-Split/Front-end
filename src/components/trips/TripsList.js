@@ -1,22 +1,36 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {getTrips, getExpenses} from '../../actions/index.js';
 
 import TripCard from './TripCard.js';
+import AddTrip from './AddTrip';
+import { Modal } from 'reactstrap';
 
 const TripsList = (props) => {
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+    const [isUpdated, setIsUpdated] = useState(false);
+
     useEffect(() => {
         props.getTrips();
         props.getExpenses();
-    }, [])
+        setIsUpdated(true);
+    }, [isUpdated])
+
+    const forceRender = () => {
+        setIsUpdated(!isUpdated);
+    }
     
     return (
-        <div>
-            <h1>Current Trips</h1>
-            <Link to="/trips/new">Add Trip</Link>
-            {props.trips.map((trip) => trip.complete === 0 ? 
-                <TripCard 
+        <div className="triplist">
+            <div className="triplist-header">
+                <h1>Current Trips</h1>
+                <button className="button-white" onClick={toggle}>
+                    {/* <Link to="/trips/new">Add Trip</Link> */}
+                    Add Trip
+                </button>
+            </div>
+            {props.trips.map((trip) => trip.complete === 0 ? <TripCard 
                     key={trip.id} 
                     trip={trip} 
                     expenses={props.expenses.reduce((acc, cv) => {
@@ -27,9 +41,10 @@ const TripsList = (props) => {
                         }   
                     }, 0)} /> : null
             )}
-            <h1>Past Trips</h1>
-            {props.trips.map((trip) => trip.complete === 1 ? 
-                <TripCard 
+            <div className="triplist-header">
+                <h1>Past Trips</h1>
+            </div>
+            {props.trips.map((trip) => trip.complete === 1 ? <TripCard 
                     key={trip.id} 
                     trip={trip} 
                     expenses={props.expenses.reduce((acc, cv) => {
@@ -40,6 +55,9 @@ const TripsList = (props) => {
                         }   
                     }, 0)} /> : null
             )}
+            <Modal isOpen={modal} toggle={toggle}>
+                <AddTrip toggle={toggle} forceRender={forceRender}/>
+            </Modal>
         </div>
     )
 }
