@@ -5,6 +5,11 @@ const ExpenseDetail = ({expDetail}) => {
 
     const { expense_name, total_expense_price, primary_paid, id, created_at, tripName, tripParticipants } = expDetail;
 
+    const settleExpense = (event) => {
+        event.preventDefault();
+        //set participant.amount = 0
+    }
+
     return (
         <div className='expenseDetail'>
             <Link to={`/expense/${id}`}>
@@ -16,6 +21,11 @@ const ExpenseDetail = ({expDetail}) => {
             <p>Trip Name: {tripName} </p>
             <p>Number of Peopl Participated: {tripParticipants} </p>
             <p>Cost Per Participant: {total_expense_price/tripParticipants} </p>
+            {tripParticipants.map(participant => (
+                <p>{participant.name}</p>
+                <p>{participant.amount}</p>
+                <button onClick={settleExpense}>Settle</button>
+            ))}
         </div>
     );
 };
