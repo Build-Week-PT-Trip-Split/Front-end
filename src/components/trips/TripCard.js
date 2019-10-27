@@ -19,7 +19,7 @@ const TripCard = (props) => {
                 <p className="card-text">Date of Trip: {props.trip.date}</p>
                 <p className="card-text">Cost: {props.expenses}</p>
                 <button className="button-teal">
-                    <Link to={`trips/${props.trip.id}/edit`}>Edit Trip</Link>
+                    <Link to={`/trips/${props.trip.id}/edit`}>Edit Trip</Link>
                 </button>
             </div> 
         </Container>
