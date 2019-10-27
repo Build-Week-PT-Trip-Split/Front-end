@@ -22,7 +22,7 @@ const LogIn = ({values, errors, touched}) => {
                     <p className="error"> {errors.password} </p>
                      )}
                 </label>
-                <button className="formBtn">Log In</button>
+                <button className="button-teal">Log In</button>
                 <p className="form__para" >Don't have an account? <Link to="signup">Sign Up</Link></p>
            <a href="#" className="forgotPassword">Forgot your Password?</a>
             </Form>

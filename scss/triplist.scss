@@ -1,0 +1,25 @@
+.trip-container {
+    background-color: #ffffff4a;
+    border: none;
+    .card-content {
+        padding: 20px;
+        .card-text {
+                color: $purple;
+        }
+    }
+}
+
+.triplist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 80px;
+    h1 {
+        color: $light-grey;
+        font-size: 3rem;
+    }
+}
+
+.triplist {
+    margin-top: 20px;
+}

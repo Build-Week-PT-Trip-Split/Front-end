@@ -34,4 +34,43 @@ body {
   //   align-items: center;
   // }
 
+  .button-teal {
+    border-radius: 3rem;
+    background: $teal;
+    height: 5rem;
+    width: 15rem;
+    display: block;
+    font-size: 2rem;
+    border: none;
+    color: $dark-blue;
+    a {
+      color: $dark-blue;
+    }
+    &:hover {
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  .button-white {
+    border-radius: 3rem;
+    background: #12f5bd00;
+    height: 5rem;
+    width: 15rem;
+    display: block;
+    font-size: 2rem;
+    border-color: $white;
+    color: white;
+    border-width: 2px;
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+        color: $teal
+      }
+    }
+  }
+
  

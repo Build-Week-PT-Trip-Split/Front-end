@@ -26,7 +26,7 @@ const SignUp = props => {
                 {props.touched.password && props.errors.password && (
                     <p className="error">{props.errors.password}</p>
                 )}
-                <button className="formBtn" type="submit">Submit</button>
+                <button className="button-teal" type="submit">Submit</button>
                 <p className="form__para">Already have an account? <Link to="login">Log In</Link></p>
             </Form>
         </div>

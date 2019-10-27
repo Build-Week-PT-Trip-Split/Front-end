@@ -42,10 +42,7 @@ function App(props) {
       {/* This following route makes sure you get redirected correctly as soon as you load the app */}
       <PrivateRoute path='/' exact component={TripsList} />
       <PrivateRoute exact path="/trips" component={TripsList}/>
-
       <PrivateRoute exact path="/trips/:id" component={TripDetail} />
-
-      <PrivateRoute path="/trips/new" component={AddTrip} />
       <PrivateRoute path="/trips/:id/expenses/new" component={AddExpense} />
       <PrivateRoute path="/trips/:id/edit" component={UpdateTrip} />
 
