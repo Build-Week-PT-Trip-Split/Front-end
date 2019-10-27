@@ -20,6 +20,8 @@ const TripsList = (props) => {
     const forceRender = () => {
         setIsUpdated(!isUpdated);
     }
+
+
     
     return (
         <div className="triplist">
@@ -30,7 +32,7 @@ const TripsList = (props) => {
                     Add Trip
                 </button>
             </div>
-            {props.trips.map((trip) => trip.complete === 0 ? <TripCard 
+            {props.trips.reverse().map((trip) => trip.complete === 0 ? <TripCard 
                     key={trip.id} 
                     trip={trip} 
                     expenses={props.expenses.reduce((acc, cv) => {
@@ -44,7 +46,7 @@ const TripsList = (props) => {
             <div className="triplist-header">
                 <h1>Past Trips</h1>
             </div>
-            {props.trips.map((trip) => trip.complete === 1 ? <TripCard 
+            {props.trips.reverse().map((trip) => trip.complete === 1 ? <TripCard 
                     key={trip.id} 
                     trip={trip} 
                     expenses={props.expenses.reduce((acc, cv) => {

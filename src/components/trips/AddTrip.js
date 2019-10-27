@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import axiosWithAuth from '../../utils/axiosAuth.js';
-import {getTrips} from '../../actions/index.js';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const AddTrip = (props) => {
     const [tripInfo, setTripInfo] = useState(
@@ -32,27 +33,34 @@ const AddTrip = (props) => {
     console.log(props)
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <FormGroup>
-                <Label for="name">Trip Name</Label>
-                    <Input 
-                        type="text" 
-                        name="name" 
-                        placeholder="Trip Name"
-                        value={tripInfo.name}
-                        onChange={handleChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="date">Date of Trip</Label>
-                    <Input 
-                        type="text" 
-                        name="date" 
-                        placeholder="Date - dd/mm/yyyy"
-                        value={tripInfo.date}
-                        onChange={handleChange} />
-            </FormGroup>
-            <Button>Add Trip</Button>
-        </Form>
+        <React.Fragment>
+            <div className="form-header">
+                <button onClick={props.toggle}>
+                    <FontAwesomeIcon icon={faTimes}/>
+                </button>
+            </div>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label for="name">Trip Name</Label>
+                        <Input 
+                            type="text" 
+                            name="name" 
+                            placeholder="Trip Name"
+                            value={tripInfo.name}
+                            onChange={handleChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="date">Date of Trip</Label>
+                        <Input 
+                            type="text" 
+                            name="date" 
+                            placeholder="Date - dd/mm/yyyy"
+                            value={tripInfo.date}
+                            onChange={handleChange} />
+                </FormGroup>
+                <Button className="button-teal">Add Trip</Button>
+            </Form>
+        </React.Fragment>
       );
 
 }
