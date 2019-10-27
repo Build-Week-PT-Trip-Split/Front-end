@@ -57,7 +57,7 @@ const TripsList = (props) => {
                         }   
                     }, 0)} /> : null
             )}
-            <Modal isOpen={modal} toggle={toggle}>
+            <Modal isOpen={modal} toggle={toggle} centered >
                 <AddTrip toggle={toggle} forceRender={forceRender}/>
             </Modal>
         </div>
