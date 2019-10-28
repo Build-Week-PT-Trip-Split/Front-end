@@ -18,9 +18,7 @@ const TripCard = (props) => {
                 </Link>
                 <p className="card-text">Date of Trip: {props.trip.date}</p>
                 <p className="card-text">Cost: {props.expenses}</p>
-                <button className="button-teal">
-                    <Link to={`/trips/${props.trip.id}/edit`}>Edit Trip</Link>
-                </button>
+                <button onClick={() => props.toggle(props.trip)} className="button-teal">Edit Trip</button>
             </div> 
         </Container>
     )

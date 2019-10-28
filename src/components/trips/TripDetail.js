@@ -4,6 +4,7 @@ import ExpenseList from '../expenses/ExpenseList';
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrip} from '../../actions/index.js';
 import {Link} from 'react-router-dom';
+import placeholder from '../../assets/no-picture-available-icon-1.jpg';
 
 const TripDetail = (props) => {
 
@@ -29,10 +30,14 @@ const TripDetail = (props) => {
     console.log(props)
 
     return (
-        <div>
+        <div className="tripdetails">
             {props.trip ? 
                 <React.Fragment>
                 <h1>{props.trip.name}</h1>
+                <div className="img-wrapper">
+                    {(props.trip.img) ? <img src={props.trip.img} alt="" /> : <img src={placeholder} alt="" />}
+                </div>
+                <div className="tripdetail-header">
                     {(() => {
                         if (props.trip.complete == 1) {
                             return (<h3>Status: <span className='completed'>Completed</span></h3>)
@@ -40,13 +45,10 @@ const TripDetail = (props) => {
                             return (<h3>Status: <span className='open'>Open</span></h3>)
                         }
                     })()}
-                    <img src={props.trip.img} alt="" />
-                    <p>Date of Trip: {props.trip.date}</p>
+                    <p>Date: {props.trip.date}</p>
+                </div>
+                <p className="trip-cost">Cost: {props.costs}</p>
                     <ExpenseList trip={props.trip} />
-                    <button>
-                        <Link to={`/trips/${props.id}/expenses/new`}>Add Expense</Link>
-                    </button>
-                    <p>Cost: {props.costs}</p>
                     {props.trip.participants ? props.trip.participants.map(part => {
                         return (
                             <div>
@@ -57,11 +59,13 @@ const TripDetail = (props) => {
                     }) : null}
                 </React.Fragment> :
             <p>Loading...</p>}
-            <button>
-                <Link to={`/trips/${props.id}/edit`}>Edit Trip</Link>
-            </button>
-            <button onClick={deleteTrip}>Delete Trip</button>
-            {props.costs === 0 ? <button onClick={settleTrip}>Settle Trip</button> : null}
+            <div className="trip-buttons">
+                <button className="button-white">
+                    <Link to={`/trips/${props.id}/edit`}>Edit Trip</Link>
+                </button>
+                <button className="button-white" onClick={deleteTrip}>Delete Trip</button>
+                {props.costs === 0 ? <button onClick={settleTrip} className="button-teal">Settle Trip</button> : null}
+            </div>
         </div>
     )
 }
