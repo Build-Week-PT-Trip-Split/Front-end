@@ -31,7 +31,7 @@ const myMapPropsToValues = (props) => {
         expense_name: props.expense_name || "",
         total_expense_price: props.total_expense_price || "",
         primary_paid: props.primary_paid || "",
-        trip_id: props.match.params.id
+        trip_id: props.trip.id
     };
     return returnObj;
 }
@@ -41,8 +41,8 @@ const myHandleSubmit = (values, {props}) => {
         axiosWithAuth().post('/expenses', values)
             .then((res) => {
                 console.log(res)
-                getExpenses();
-                props.history.push(`/trips/${values.trip_id}`)
+                props.forceRender();
+                props.toggle();
                 })
             .catch((err) => console.log(err))
 };

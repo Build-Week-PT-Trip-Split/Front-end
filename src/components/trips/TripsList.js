@@ -20,11 +20,10 @@ const TripsList = (props) => {
         setTripToUpdate(trip);
     };
 
-    console.log(tripToUpdate)
+    console.log(isUpdated)
 
     useEffect(() => {
         props.getTrips();
-        props.getExpenses();
         setIsUpdated(true);
     }, [isUpdated])
 

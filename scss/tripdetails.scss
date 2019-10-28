@@ -1,0 +1,40 @@
+.App > .tripdetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+    h1 {
+        color: $light-grey;
+        font-size: 3rem;
+    }
+    .tripdetail-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 15px;
+        h3, p {
+            color: $light-grey;
+            font-size: 2rem;
+            margin: 0;
+            .open {
+                color: $teal;
+            }
+        } 
+    }
+    .trip-cost {
+        color: $light-grey;
+        font-size: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+
+.App > .tripdetails > .trip-buttons {
+    display: flex;
+    button {
+        margin: 0 10px;
+    }
+}

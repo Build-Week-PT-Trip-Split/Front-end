@@ -1,0 +1,26 @@
+.expenseList {
+    background-color: #ffffff4a;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    .expenses-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        h1 {
+            color: $purple;
+        }
+    }
+    .no-expenses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: $light-grey;
+        margin-top: 10px;
+        padding: 20px;
+        p {
+            margin: 0 0 0 10px;
+        }
+    }
+}

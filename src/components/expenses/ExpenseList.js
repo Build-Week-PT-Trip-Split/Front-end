@@ -17,12 +17,12 @@ const ExpenseList = props => {
         <div className='expenseList'>
             <div className="expenses-header">
                 <h2>Expenses:</h2>
-                <button className="button-teal">
-                    <Link to={`/trips/${props.id}/expenses/new`}>Add Expense</Link>
+                <button onClick={props.addExpense} className="button-teal">
+                    Add Expense
                 </button>
             </div>   
             {
-                expenses.length !== 0 ? expenses.map(expense => <ExpenseCard key={expense.id} exp={expense} />) : 
+                expenses.length !== 0 ? expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />) : 
                 <div className="no-expenses">
                     <FontAwesomeIcon icon={faCoins}/>
                     <p>No Expenses</p>
