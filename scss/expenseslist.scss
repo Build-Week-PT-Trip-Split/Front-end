@@ -23,4 +23,30 @@
             margin: 0 0 0 10px;
         }
     }
+    .list-group {
+        margin-top: 10px;
+        background-color: $light-grey;
+        a {
+            padding: 5px 10px 0 10px;
+        }
+    }
+}
+
+.expenseCard {
+    display: flex;
+    background-color: $light-grey;
+    justify-content: space-between;
+    &:hover {
+        text-decoration: none;
+    }
+    p {
+        color: $purple;
+        font-size: 2rem;
+        span {
+            font-size: 2rem;
+        }
+    }
+    p:last-child {
+        color: $teal;
+    }
 }

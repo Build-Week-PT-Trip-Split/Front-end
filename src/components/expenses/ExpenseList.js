@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseCard from './ExpenseCard';
 import {getExpenses} from '../../actions/index.js';
-import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { ListGroup } from 'reactstrap';
 
 const ExpenseList = props => {
     React.useEffect(() => {
@@ -21,6 +21,7 @@ const ExpenseList = props => {
                     Add Expense
                 </button>
             </div>   
+            <ListGroup>
             {
                 expenses.length !== 0 ? expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />) : 
                 <div className="no-expenses">
@@ -28,6 +29,7 @@ const ExpenseList = props => {
                     <p>No Expenses</p>
                 </div>
             }
+            </ListGroup>
         </div>
     );
 };

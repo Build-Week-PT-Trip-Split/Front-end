@@ -1,26 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { ListGroupItem } from 'reactstrap';
 
 const ExpenseCard = ({exp}) => {
 
     const { expense_name, total_expense_price, primary_paid, id, trip_id } = exp;
 
     return (
-        <div className='expenseCard'>
-            <Row>
-                <Col sm="6">
-                    <Card body>
-                        <CardTitle>{expense_name}</CardTitle>
-                        <CardText>Amount: {total_expense_price}</CardText>
-                        <CardText>Primary: {primary_paid}</CardText>
-                        <Button>
-                        <Link to={`/trips/${trip_id}/expenses/${id}`}>View Expense</Link>
-                        </Button>
-                    </Card>
-                </Col>
-            </Row>
-        </div>
+        <ListGroupItem>
+            <Link  to={`/trips/${trip_id}/expenses/${id}`} className='expenseCard'>
+                <p>
+                    <span>{expense_name}</span> paid by {primary_paid}
+                </p>
+                <p>${total_expense_price}</p>
+            </Link>
+        </ListGroupItem>
       );
 };
 

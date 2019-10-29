@@ -23,8 +23,7 @@ const UpdateTrip = (props) => {
         e.preventDefault();
         axiosWithAuth().put(`/trips/${props.trip.id}`, {
             name: updatedTrip.name,
-            date: updatedTrip.date,
-            base_cost: updatedTrip.base_cost
+            date: updatedTrip.date
         })
             .then((res) => {
                 props.forceRender();
@@ -57,15 +56,6 @@ const UpdateTrip = (props) => {
                         name="date"
                         value={updatedTrip.date} 
                         placeholder="Date - dd/mm/yyyy"
-                        onChange={handleChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="base_cost">Cost of Trip</Label>
-                    <Input 
-                        type="text" 
-                        name="base_cost"
-                        value={updatedTrip.base_cost}
-                        placeholder="Base Cost"
                         onChange={handleChange} />
             </FormGroup>
             <Button>Update Trip</Button>

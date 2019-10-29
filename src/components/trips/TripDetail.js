@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux';
 import ExpenseList from '../expenses/ExpenseList';
 import axiosWithAuth from '../../utils/axiosAuth.js';
-import {getTrip, getExpenses} from '../../actions/index.js';
+import {getTrip, getExpenses, getTrips} from '../../actions/index.js';
 import {Link} from 'react-router-dom';
 import placeholder from '../../assets/no-picture-available-icon-1.jpg';
 import AddExpense from '../expenses/AddExpense';
@@ -13,7 +13,6 @@ const TripDetail = (props) => {
     const [addModal, setAddModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
-    const [tripToUpdate, setTripToUpdate] = useState({});
 
     const deleteTrip = (event) => {
         event.preventDefault();
@@ -27,15 +26,18 @@ const TripDetail = (props) => {
 
     const settleTrip = (event) => {
         event.preventDefault();
-        //set props.trip.complete = 1
+        axiosWithAuth().put(`/trips/${props.trip.id}`, {
+            complete: 1
+        })
+        .then((res) => {
+            console.log(res);
+            forceRender();
+        })
+        .catch(err => console.log(err))
     }
 
     const addToggle = () => setAddModal(!addModal);
-    const editToggle = (trip) => {
-        console.log('test')
-        setEditModal(!editModal);
-        setTripToUpdate(trip);
-    };
+    const editToggle = () => setEditModal(!editModal);
 
     const forceRender = () => {
         setIsUpdated(!isUpdated);
@@ -79,9 +81,7 @@ const TripDetail = (props) => {
                 </React.Fragment> :
             <p>Loading...</p>}
             <div className="trip-buttons">
-                <button className="button-white">
-                    <Link to={`/trips/${props.id}/edit`}>Edit Trip</Link>
-                </button>
+                <button onClick ={editToggle} className="button-white">Edit Trip</button>
                 <button className="button-white" onClick={deleteTrip}>Delete Trip</button>
                 {props.costs === 0 ? <button onClick={settleTrip} className="button-teal">Settle Trip</button> : null}
             </div>
@@ -89,7 +89,7 @@ const TripDetail = (props) => {
                 <AddExpense toggle={addToggle} forceRender={forceRender} trip={props.trip}/>
             </Modal>
             <Modal isOpen={editModal} toggle={editToggle} centered >
-                <UpdateTrip forceRender={forceRender} trip={tripToUpdate} toggle={editToggle}/>
+                <UpdateTrip forceRender={forceRender} trip={props.trip} toggle={editToggle}/>
             </Modal>
         </div>
     )
@@ -111,4 +111,4 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-export default connect(mapStateToProps, {getTrip, getExpenses})(TripDetail);
+export default connect(mapStateToProps, {getTrip, getExpenses, getTrips})(TripDetail);
