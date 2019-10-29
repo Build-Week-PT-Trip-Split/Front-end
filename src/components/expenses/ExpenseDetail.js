@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Modal } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ExpenseDetail = (props) => {
     console.log(props)
@@ -77,11 +79,14 @@ const ExpenseDetail = (props) => {
             {
                 <React.Fragment>
                     <Modal isOpen={modal} toggle={toggle} centered >
-                        <form onSubmit={addPayment}>
-                            <label>Name</label>
-                            <input onChange={handleChange} type="text" name="name" value={participant.name}></input>
-                            <label>Amount</label>
-                            <input onChange={handleChange} type="number" name="amount" value={participant.amount}></input>
+                        <div className="form-header">
+                            <button onClick={toggle}>
+                                <FontAwesomeIcon icon={faTimes}/>
+                            </button>
+                        </div>
+                        <form onSubmit={addPayment} className="addPayment">
+                            <input onChange={handleChange} type="text" name="name" placeholder="Participant Name" value={participant.name}></input>
+                            <input onChange={handleChange} type="number" name="amount" placeholder="Payment Amount" value={participant.amount}></input>
                             <button>Pay</button>
                         </form>
                     </Modal>
