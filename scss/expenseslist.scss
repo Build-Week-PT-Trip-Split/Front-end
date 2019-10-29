@@ -1,4 +1,4 @@
-.expenseList {
+.tripdetails > .expenseList {
     background-color: #ffffff4a;
     width: 100%;
     padding: 20px;
@@ -21,6 +21,10 @@
         padding: 20px;
         p {
             margin: 0 0 0 10px;
+            color: $dark-grey;
+        }
+        svg {
+            color: $dark-grey;
         }
     }
     .list-group {

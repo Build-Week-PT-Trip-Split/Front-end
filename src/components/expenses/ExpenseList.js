@@ -13,6 +13,8 @@ const ExpenseList = props => {
 
     const expenses = props.expenses.filter(expense => expense.trip_id === props.trip.id);
 
+    console.log(expenses.length)
+
     return (
         <div className='expenseList'>
             <div className="expenses-header">
@@ -23,11 +25,12 @@ const ExpenseList = props => {
             </div>   
             <ListGroup>
             {
-                expenses.length !== 0 ? expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />) : 
+                // expenses.length == 0 ? 
                 <div className="no-expenses">
                     <FontAwesomeIcon icon={faCoins}/>
                     <p>No Expenses</p>
-                </div>
+                 </div> 
+                //  : expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />)
             }
             </ListGroup>
         </div>

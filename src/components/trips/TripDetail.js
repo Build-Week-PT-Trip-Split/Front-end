@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import ExpenseList from '../expenses/ExpenseList';
 import axiosWithAuth from '../../utils/axiosAuth.js';
 import {getTrip, getExpenses, getTrips} from '../../actions/index.js';
-import {Link} from 'react-router-dom';
 import placeholder from '../../assets/no-picture-available-icon-1.jpg';
 import AddExpense from '../expenses/AddExpense';
 import { Modal } from 'reactstrap';
@@ -68,7 +67,7 @@ const TripDetail = (props) => {
                     })()}
                     <p>Date: {props.trip.date}</p>
                 </div>
-                <p className="trip-cost">Cost: {props.costs}</p>
+                <p className="trip-cost">Cost: ${props.costs}</p>
                     <ExpenseList trip={props.trip} addExpense={addToggle}/>
                     {props.trip.participants ? props.trip.participants.map(part => {
                         return (
@@ -83,7 +82,7 @@ const TripDetail = (props) => {
             <div className="trip-buttons">
                 <button onClick ={editToggle} className="button-white">Edit Trip</button>
                 <button className="button-white" onClick={deleteTrip}>Delete Trip</button>
-                {props.costs === 0 ? <button onClick={settleTrip} className="button-teal">Settle Trip</button> : null}
+                <button onClick={settleTrip} className="button-teal">Settle Trip</button>
             </div>
             <Modal isOpen={addModal} toggle={addToggle} centered >
                 <AddExpense toggle={addToggle} forceRender={forceRender} trip={props.trip}/>
