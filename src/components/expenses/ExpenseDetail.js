@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Modal } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const ExpenseDetail = (props) => {
     console.log(props)
@@ -58,21 +58,21 @@ const ExpenseDetail = (props) => {
                         Add Participant
                     </button>
             </div>
-            <div className="participants-list">
-            <p className="participant">
+            <ListGroup className="participants-list">
+            <ListGroupItem className="participant">
                 <span>{primaryPaid.name}</span>
                 <span>${primaryPaid.amount}</span>
-            </p>
+            </ListGroupItem>
             
             {
                 payments.map(participant => 
-                    <p className="participant">
+                    <ListGroupItem className="participant">
                         <span>{participant.name}</span>
                         <span>${participant.amount}</span>
-                    </p>
+                    </ListGroupItem>
                 )
             }
-            </div>
+            </ListGroup>
             </div>
             {
                 <React.Fragment>

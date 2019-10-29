@@ -25,12 +25,12 @@ const ExpenseList = props => {
             </div>   
             <ListGroup>
             {
-                // expenses.length == 0 ? 
+                expenses.length == 0 ? 
                 <div className="no-expenses">
                     <FontAwesomeIcon icon={faCoins}/>
                     <p>No Expenses</p>
                  </div> 
-                //  : expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />)
+                 : expenses.reverse().map(expense => <ExpenseCard key={expense.id} exp={expense} />)
             }
             </ListGroup>
         </div>

@@ -23,6 +23,8 @@ const TripDetail = (props) => {
             .catch((err) => console.log(err));
     }
 
+    console.log(isUpdated);
+
     const settleTrip = (event) => {
         event.preventDefault();
         axiosWithAuth().put(`/trips/${props.trip.id}`, {
