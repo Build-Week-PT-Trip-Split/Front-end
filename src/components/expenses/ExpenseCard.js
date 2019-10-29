@@ -8,7 +8,12 @@ const ExpenseCard = ({exp}) => {
 
     return (
         <ListGroupItem>
-            <Link  to={`/trips/${trip_id}/expenses/${id}`} className='expenseCard'>
+            <Link  to={{
+                pathname: `/trips/${trip_id}/expenses/${id}`,
+                state: {
+                expense: exp
+            }
+                }} className='expenseCard'>
                 <p>
                     <span>{expense_name}</span> paid by {primary_paid}
                 </p>

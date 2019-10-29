@@ -1,0 +1,16 @@
+.addExpense {
+    input {
+        border-radius: 5px;
+        width: 22rem;
+        height: 4.5rem;
+        background: $white;
+        border: 1px solid $white;
+        padding: 1rem;
+        font-size: 2rem;
+        color: $dark-grey;
+        margin: 1rem 0;
+    }
+    label {
+        font-size: 2rem;
+    }
+}
