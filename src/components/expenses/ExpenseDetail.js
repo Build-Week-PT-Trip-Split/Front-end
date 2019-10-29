@@ -1,32 +1,101 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, {useState} from 'react';
+import { Modal } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const ExpenseDetail = ({expDetail}) => {
+const ExpenseDetail = (props) => {
+    console.log(props)
+    const { expense_name, total_expense_price, primary_paid, id, created_at, tripName, tripParticipants } = props.location.state.expense
+    const [primaryPaid, setPrimaryPaid] = useState({
+        name: primary_paid,
+        amount: total_expense_price
+    })
+    const [participant, setParticipant] = useState({})
 
-    const { expense_name, total_expense_price, primary_paid, id, created_at, tripName, tripParticipants } = expDetail;
+    const [payments, setPayments] = useState([])
 
-    const settleExpense = (event) => {
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(!modal);
+
+    const handleChange = (event) => {
+        setParticipant({...participant, [event.target.name]: event.target.value})
+    }
+
+    const makePayment = (amount) => {
+        const primary = {
+            name: primaryPaid.name,
+            amount: primaryPaid.amount - amount
+        }
+        setPrimaryPaid(primary)
+    }
+
+    const addPayment = (event) => {
         event.preventDefault();
-        //set participant.amount = 0
+        setPayments([...payments, participant]);
+        makePayment(participant.amount);
+        setParticipant({
+            "name": "",
+            "amount": ""
+        });
+        toggle();
     }
 
     return (
         <div className='expenseDetail'>
-            <Link to={`/expense/${id}`}>
-                <h3>{expense_name}</h3>
-            </Link>
-            <p>Amount: {total_expense_price}</p>
-            <p>Paid By: {primary_paid}</p>
+            <h1>{expense_name}</h1>
+            <div className="expense-header">
+                <p>Amount: ${total_expense_price}</p>
+                <p>Paid By: {primary_paid}</p>
+            </div>
             <p>Expense Created on: {created_at} </p>
-            <p>Trip Name: {tripName} </p>
-            <p>Number of People Participated: {tripParticipants} </p>
-            <p>Cost Per Participant: {total_expense_price/tripParticipants} </p>
-            {tripParticipants.map(participant => (
-                <p>{participant.name}</p>
-                <p>{participant.amount}</p>
-                <button onClick={settleExpense}>Settle</button>
-            ))}
+            {/* <p>Trip Name: {tripName} </p> */}
+            {/* <p>Number of People Participated: {tripParticipants} </p>
+            <p>Cost Per Participant: {total_expense_price/tripParticipants} </p> */}
+            <div className="expenseParticipants">
+                <div className="participants-header">
+                    <h3>Participants</h3>
+                    <button onClick={toggle} className="button-teal">
+                        Add Participant
+                    </button>
+            </div>
+            <ListGroup className="participants-list">
+            <ListGroupItem className="participant">
+                <span>{primaryPaid.name}</span>
+                <span>${primaryPaid.amount}</span>
+            </ListGroupItem>
+            
+            {
+                payments.map(participant => 
+                    <ListGroupItem className="participant">
+                        <span>{participant.name}</span>
+                        <span>${participant.amount}</span>
+                    </ListGroupItem>
+                )
+            }
+            </ListGroup>
+            </div>
+            {
+                <React.Fragment>
+                    <Modal isOpen={modal} toggle={toggle} centered >
+                        <div className="form-header">
+                            <button onClick={toggle}>
+                                <FontAwesomeIcon icon={faTimes}/>
+                            </button>
+                        </div>
+                        <form onSubmit={addPayment} className="addPayment">
+                            <input onChange={handleChange} type="text" name="name" placeholder="Participant Name" value={participant.name}></input>
+                            <input onChange={handleChange} type="number" name="amount" placeholder="Payment Amount" value={participant.amount}></input>
+                            <button>Pay</button>
+                        </form>
+                    </Modal>
+                    <button onClick={props.history.goBack} className="button-teal">
+                        {/* <Link to="">Back to Trip</Link> */}
+                        Back to Trip
+                        </button>
+                </React.Fragment>
+            }
         </div>
     );
 };

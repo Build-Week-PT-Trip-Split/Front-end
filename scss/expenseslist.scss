@@ -1,0 +1,56 @@
+.tripdetails > .expenseList {
+    background-color: #ffffff4a;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    .expenses-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        h1 {
+            color: $purple;
+        }
+    }
+    .no-expenses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: $light-grey;
+        margin-top: 10px;
+        padding: 20px;
+        p {
+            margin: 0 0 0 10px;
+            color: $dark-grey;
+        }
+        svg {
+            color: $dark-grey;
+        }
+    }
+    .list-group {
+        margin-top: 10px;
+        background-color: $light-grey;
+        a {
+            padding: 5px 10px 0 10px;
+        }
+    }
+}
+
+.expenseCard {
+    display: flex;
+    background-color: $light-grey;
+    justify-content: space-between;
+    &:hover {
+        text-decoration: none;
+    }
+    p {
+        color: $purple;
+        font-size: 2rem;
+        span {
+            font-size: 2rem;
+        }
+    }
+    p:last-child {
+        color: $teal;
+    }
+}
